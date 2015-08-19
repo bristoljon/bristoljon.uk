@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Postcode Finder</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <style type="text/css">
+
+    * {
+    	margin: 0;
+    	padding: 0;
+    	text-align: center;
+    }
+
+    body {
+    	padding-top: 50px;
+    	background: radial-gradient(circle, #7aff9f 40%, #9bfff3);
+        background-size: cover;
+    }
+
+    h1 {
+    	font-weight: bold;
+    }
+
+    #submit {
+    	margin:10px;
+    }
+
+    input {
+    	text-align:left;
+    }
+     
+    #output {
+    	display:none;
+    }
+
+    </style>
+
+
+  </head>
+
+<body>
+	<div class="container">
+		<div class="col-md-4 col-md-offset-4">
+			<h1>Postcode Finder</h1>
+			<h4>Enter your postcode below to find address</h4>
+			<form method="post">
+				<div class="input-group">
+					<span class="input-group-addon">Postcode</span>
+					<input id="postcode" class="form-control" type="text" name="postcode" placeholder="e.g. BS16 1JL">
+				</div>
+				<input id="submit" type="submit" class="btn-lg btn-success" value="Go">
+			</form>
+			<div id="output" class="alert-success"></div>
+		</div>
+	</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    
+<script src="../js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+
+	$("#submit").click(function(event) {
+
+		event.preventDefault();
+
+		var postie =  encodeURI($("#postcode").val());
+		
+		var query = "https://maps.googleapis.com/maps/api/geocode/xml?address="+postie+"&key=AIzaSyDD_R95RUS9E2BT5UgjRl0sMxLCz-7R0cg";
+
+		$.ajax({
+			type: "GET",
+			url: query,
+			dataType: "xml",
+			success: processXML
+		});
+	})
+
+	function processXML (xml) {
+		var address = $(xml).find("formatted_address").text();
+		$("#output").fadeIn(200, function () {
+			$(this).html(address);
+		})
+	}
+
+	
+
+
+
+
+</script>
+
+</body>
+</html>
+  

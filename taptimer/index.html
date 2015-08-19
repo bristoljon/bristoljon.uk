@@ -1,0 +1,254 @@
+
+<!doctype html>
+<html>
+<head>
+    <title>Tap Timer</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link href='http://fonts.googleapis.com/css?family=Oxygen+Mono' rel='stylesheet' type='text/css'>
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    
+    <style type="text/css">
+    	
+    	body {
+            font-family: 'Oxygen Mono', ;
+            color:#444444;
+            padding:0;
+    	}
+
+        .container {
+            width:300px;
+            position:relative;
+            margin:0 auto;
+            padding:0;
+            text-align: center;
+        }
+
+        h1 {
+            padding:0;
+            margin:10px;
+        }
+
+    	#taptimer {
+    		width:100%;
+    		border:1px solid black;
+    		border-radius:5px;
+    		padding:5px;     
+    	}
+
+    	.output {
+    		margin: 0 auto;
+    		margin-right:5px;
+
+    		width:31%;
+    		height:40px;
+    		float:left;
+ 
+    		background-color:orange;
+    		border-radius:5px;
+            border:1px solid black;
+    		text-align: right;
+    		font-size: 1.7em;
+    		font-weight: bold;
+
+            padding-top: 5px;
+            padding-right: 3px;
+    	}
+
+
+    	#modeBtn {
+    		float:right;
+            color:#444444;
+
+   			background-color:yellow;	
+   			height:47px;
+   			width:94px;
+   			border-radius:5px;
+
+   			font-weight: bold;
+   			font-size:1.25em;
+    	}
+
+    	#hitBtn {
+            color:#444444;
+            background-color:pink;
+    		height:300px;
+    		width: 100%;
+    		margin-top:5px;
+    		border-radius:5px;
+    		font-size: 4em;
+    		font-weight:bold;
+    	}
+
+    	
+
+	
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Tap Timer</h1>
+        
+
+    	<div id="taptimer">
+
+    		<p id="current" class="output">Last</p>
+
+    		<p id="average" class="output">Avg</p>
+
+    		<button id="modeBtn">BPM</button>
+
+    		<button id="hitBtn">Tap Me</button>
+
+    	</div>
+
+        <p id="instructions">Hit yellow mode button for instructions..</p>
+
+    </div>
+   
+	<script type="text/javascript">
+
+        var currentMode ="BPM";
+
+		var currentHit = new Date();
+		var lastHit;
+		var difference = 0;
+
+        //global vars for average calc
+        var total = 0;
+        var hits =0;
+        var average=0;
+
+		var taps = new Array;
+
+	
+
+        function clearVars() {
+            currentHit = new Date();
+            lastHit = 0;
+            difference =0;
+            bpm = [];
+            total =0;
+            hits=-1;
+            average=0;
+        }
+
+        function averager (current) {
+            total+=current;
+            console.log("total: "+total+" current: "+current+" average: "+average+" hits: "+hits);
+            average = total / hits;
+            console.log(average);
+            average = Math.floor(average);
+            return average;
+        }
+
+        function updateDisplay (current,average) {
+            $("#current").html(current);
+            $("#average").html(average);
+        }
+
+        $("#hitBtn").mousedown (function () {
+            $(this).css("background-color","red");
+            $(this).html("Ah");
+        });
+
+		$("#hitBtn").click (function () {
+
+            $(this).css("background-color","pink");
+            $(this).html("Oooh");
+
+            ++hits;
+
+            if (hits==0) {
+                currentHit= new Date();
+            }
+
+            else {
+
+            //Get difference in milliseconds
+            lastHit = currentHit;
+            currentHit = new Date();
+            difference = currentHit - lastHit;                 
+
+
+            switch (currentMode) {
+                case "BPM":        
+                    //Convert milliseconds to BPM
+                    taps[taps.length] = Math.floor(60000 / difference);
+
+                    //Calculate average
+                    averager(taps[taps.length-1]);
+
+                    //Update display
+                    updateDisplay(taps[taps.length-1],average);
+                break;
+
+                case "Hertz":
+                    //Convert ms to Hertz
+                    taps[taps.length] = Math.floor(1000 / difference);
+
+                    //Calculate average
+                    averager(taps[taps.length-1]);
+
+                    //Update display
+                    updateDisplay(taps[taps.length-1],average);
+
+                    //beat 12?
+                    if ((taps[taps.length-1])>=18) {
+                        $("#instructions").text("OK you win but your wanking arm is in such splendid condition now, you can give yourself one.");
+                    }
+
+                    else if ((taps[taps.length-1])>=12) {
+                    	$("#instructions").text("Just joking, 12's a piece of piss.. Try beating 18 mate!");                       
+                    };
+                    break;
+
+                case "Mtrs":
+                    var metres = difference*(340.29/1000);
+
+                    updateDisplay(Math.floor(metres),averager(metres))
+                    break;
+                default:
+                    currentMode="BPM";
+            }
+            } 
+		});
+
+        $("#modeBtn").click (function () {
+            clearVars();
+            updateDisplay("Last","Avg");
+
+            $("#hitBtn").html("Tap Me")
+
+            switch (currentMode) {
+                case "BPM":
+                    currentMode="Hertz";
+                    $("#instructions").text("This mode shows taps per second. If you can beat 12 I'll give you a nice old fasioned");
+                    break;
+
+                    break;
+                case "Hertz":
+                    currentMode="Mtrs";
+                    $("#instructions").text("This calculates the metres travelled for a sound to reach you between each tap. e.g. lightning distance.");
+                    break;
+                case "Mtrs":
+                    currentMode="BPM";
+                    $("#instructions").text("This will give you the beats per minute of your taps.");
+                    break;
+                default:
+                    currentMode="BPM";
+            } 
+            $("#modeBtn").text(currentMode);
+        });
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,2 @@
+Tues: Pounds per hour / this equals that
+Wed: Dozenal calc feedback, Updates system-privacy,strip_tags
