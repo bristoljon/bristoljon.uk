@@ -83,7 +83,7 @@ function getComments(){
         // If logged in show delete button on own comments
         var spanner ="";
         for (var i=0; i<comment.length; i++){
-          date = new Date(comment[i]['date']);
+          date = Date.parseExact(comment[i]['date'],"yyyy-MM-dd HH:mm:ss");
 
           if (results.userid==="jon") {
             spanner = "<a href='"+comment[i]['id']+"'><span class='glyphicon glyphicon-trash pull-right'></span></a>";

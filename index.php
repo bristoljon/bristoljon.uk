@@ -38,7 +38,7 @@ include($root."/login.php");
                     echo $message;
                     $message="";
                   }
-                  else echo 'BRISTOLJON.UK'; ?></h1>
+                  else echo "BRISTOLJON.UK"; ?></h1>
       </div>
       <p id="photocred">Photo by <a href="https://www.flickr.com/photos/sagesolar/">@sage_solar</a> on Flickr</p>
       </div>
