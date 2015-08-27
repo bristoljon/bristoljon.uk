@@ -61,9 +61,6 @@ if ($_POST['submit']=="Submit" && $_POST['id']=="") {
   if (!$_POST['background']) $error .="<br />Please enter some content";
   
   if (!$error) {
-
-    
-
     $query = "INSERT INTO `project` (`id`,`title`,`title_url`,`latest`,`type`,`date_created`,`date_updated`,`progress`,`background`,`instructions`,`bugs`,`details`,`todo`,`privacy`) 
               VALUES (NULL, '".
                 mysqli_real_escape_string($link, $_POST['title']).
@@ -111,8 +108,6 @@ if ($_POST['submit']=="Submit" && $_POST['id']=="") {
 
         mysqli_query($link, $query) or die(mysqli_error($link));
       }
-
-      header("Location: /project/".$_POST['title_url']);
   }
 
   else {
@@ -144,7 +139,7 @@ if ($_POST['submit']=="Submit" && $_POST['id']!="") {
       if ($_POST['update']) {
         $query = "INSERT INTO `new_update` (`id`,`title`,`content`,`type`,`reference_type`,`reference_id`,`privacy`,`url`) 
               VALUES (NULL, '".
-                mysqli_real_escape_string($link, $_POST['title']).
+                mysqli_real_escape_string($link, $_POST['update_title']).
                 "','".
                 mysqli_real_escape_string($link, substr($_POST['content'],0,300)).
                 "','Edited ".mysqli_real_escape_string($link, $_POST['type'])." Project',
@@ -156,12 +151,82 @@ if ($_POST['submit']=="Submit" && $_POST['id']!="") {
 
         mysqli_query($link, $query) or die(mysqli_error($link));
       }
-
-      header("Location: /project/".$_POST['title_url']);
 }
 
-unset($_POST['submit']);
+// Upload image if present
+if ($_POST['imageTitle']) {
 
+  //Process the image that is uploaded by the user
+
+
+
+$target_dir = $root."/uploads/";
+$target_file = $target_dir.basename($_FILES["imageUpload"]["name"]);
+$uploadOk = 1;
+$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+// Check if image file is a actual image or fake image
+if(isset($_POST["submit"])) {
+    $check = getimagesize($_FILES["imageUpload"]["tmp_name"]);
+    if($check !== false) {
+        $message .= "<br/>"."File is an image - " . $check["mime"] . ".";
+        $uploadOk = 1;
+    } else {
+        $message .= "<br/>"."File is not an image.";
+        $uploadOk = 0;
+    }
+}
+// Check if file already exists
+if (file_exists($target_file)) {
+    $message .= "<br/>"."Sorry, file already exists.";
+    $uploadOk = 0;
+}
+// Check file size
+if ($_FILES["imageUpload"]["size"] > 500000) {
+    $message .= "<br/>"."Sorry, your file is too large.";
+    $uploadOk = 0;
+}
+// Allow certain file formats
+if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+&& $imageFileType != "gif" ) {
+    $message .= "<br/>"."Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+    $uploadOk = 0;
+}
+// Check if $uploadOk is set to 0 by an error
+if ($uploadOk == 0) {
+    $message .= "<br/>"."Sorry, your file was not uploaded.";
+// if everything is ok, try to upload file
+} else {
+    if (move_uploaded_file($_FILES["imageUpload"]["tmp_name"], $target_file)) {
+        $message .= "<br/>"."The file ". basename( $_FILES["imageUpload"]["name"]). " has been uploaded.";
+    } else {
+        $message .= "<br/>"."Sorry, there was an error uploading your file.";
+    }
+}
+
+  //Add image to database
+  $query= "INSERT INTO `image` (`id`,`title`,`description`,`url`) 
+            VALUES (NULL,'".
+              mysqli_real_escape_string($link,$_POST['imageTitle']).
+              "','".
+              mysqli_real_escape_string($link,$_POST['imageDescription']).
+              "','/uploads/".
+              $_FILES["imageUpload"]["name"]."')";
+
+  mysqli_query($link,$query) or die(mysqli_error($link));
+
+  // Associate image with this project
+  $image_id = $link->insert_id;
+  $project_id = $_POST['id'];
+
+  $query= "INSERT INTO `project_image` (`project_id`,`image_id`) 
+            VALUES ('".$project_id."','".$image_id."')";
+
+  mysqli_query($link,$query) or die(mysqli_error($link));
+}
+
+if ($_POST['title_url']) {
+  header("Location: /project/".$_POST['title_url']);
+}
 ?>
 
 
@@ -207,7 +272,21 @@ body {
 
 <div class="container">
 
-  <form id="blogform" method="post">
+  <form id="blogform" method="post" enctype="multipart/form-data">
+
+    <input type="file" name="imageUpload" id="imageUpload">
+
+    <div class="form-group">
+      <label for="imageDescription">Image Description</label>
+      <input class="form-control" type="text" name="imageDescription">
+    </div>
+
+    <div class="form-group">
+      <label for="imageTitle">Image Title</label>
+      <input class="form-control" type="text" name="imageTitle">
+    </div>
+
+    <br/>
 
     <div class="form-group">
       <label for="id">ID</label>
@@ -277,6 +356,11 @@ body {
 
     <input class="pull-left" type="checkbox" class="form-control" name="update">Generate Update
     
+    <div class="form-group">
+      <label for="update_title">Update Title</label>
+      <input class="form-control" type="text" name="update_title">
+    </div>
+
     <div class="form-group">
       <label for="content">Content</label>
       <textarea class="form-control" rows="20" name="content"></textarea>

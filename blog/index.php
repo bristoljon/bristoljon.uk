@@ -195,7 +195,7 @@ function time_elapsed_string($datetime, $full = false) {
     </div>
 </div>
 
-<?php include($root."/email.html"); ?>  
+<?php include($root."/contact.html"); ?>  
 
 <?php include($root."/foot.html"); ?>
 

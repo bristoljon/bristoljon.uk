@@ -1,7 +1,7 @@
-# Webalizer V2.21-02 Incremental Data - 08/19/2015 14:28:37
-2015 8 19 14 28 37
-1875 924 24 63 54 17 8315853 653 73 0
-7 7 447 12 19
+# Webalizer V2.21-02 Incremental Data - 08/19/2015 14:46:44
+2015 8 19 14 46 44
+1891 939 24 65 55 17 8631050 658 74 0
+7 23 447 12 19
 0 0 0 0 0 0
 0 0 0 0 0 0
 0 0 0 0 0 0
@@ -20,7 +20,7 @@
 15 13 91164 5 13 12
 295 169 2410290 16 87 18
 1308 562 3739344 6 428 14
-137 80 660988 7 68 10
+153 95 976185 7 73 11
 0 0 0 0 0 0
 0 0 0 0 0 0
 0 0 0 0 0 0
@@ -47,7 +47,7 @@
 47 46 1039881 21
 31 28 320386 17
 368 177 2171640 110
-8 4 59684 4
+24 19 374881 9
 13 10 82430 6
 201 84 492512 54
 456 215 1304695 167
@@ -60,7 +60,7 @@
 0
 0
 0
-924
+939
 0
 0
 0
@@ -69,7 +69,7 @@
 0
 0
 17
-11
+12
 0
 913
 0
@@ -103,14 +103,16 @@
 0 1 0 1719 0 1
 /
 0 102 0 1429876 28 4
+/stats/
+0 1 33836384 3659 0 0
 /tagger.php
-0 111 0 28366 8 5
+0 112 0 28774 8 5
 /header.css
-0 105 0 3058 0 0
+0 106 0 3336 0 0
 /project/onetimepad
 0 14 0 251297 1 1
 /fonts/glyphicons-halflings-regular.woff2
-0 50 0 54084 0 0
+0 51 0 72112 0 0
 /drinkscalc/png/drink20.png
 1 1 0 2549 0 0
 /drinkscalc/png/tall14.png
@@ -119,10 +121,10 @@
 0 2 0 46848 0 0
 /notfound
 0 1 0 9603 0 0
-/drinkscalc/png/bottle26.png
-1 1 0 926 0 0
 /shader/
 0 3 0 6032 1 1
+/drinkscalc/png/bottle26.png
+1 1 0 926 0 0
 /drinkscalc/png/settings61.png
 1 1 0 1419 0 0
 /validate.php
@@ -135,6 +137,8 @@
 0 99 0 618606 6 9
 /drinkscalc/png/dark45.png
 1 1 0 1906 0 0
+/stats/usage.png
+1 1 33855600 2178 0 0
 /suncalc/
 0 2 0 11442 0 0
 /drinkscalc/
@@ -156,7 +160,7 @@
 /project/urbansports
 0 22 0 421571 1 1
 /comment_tag.js
-0 114 0 129739 0 0
+0 115 0 133696 0 0
 /suncalc/calculator.js
 0 3 0 27000 0 0
 /drinkscalc/png/cocktail15.png
@@ -166,7 +170,7 @@
 /favicon.ico
 0 90 0 27984 0 0
 /blog/update-3
-0 20 0 406015 1 1
+0 21 0 426653 1 1
 /styles.css
 0 71 0 38135 0 0
 /index4.php
@@ -182,7 +186,7 @@
 /dozenal/
 0 3 0 9710 1 0
 /js/bootstrap.min.js
-0 101 0 441792 0 0
+0 102 0 478608 0 0
 /doz/
 0 23 0 104273 1 1
 /project/this
@@ -190,7 +194,7 @@
 /project/projform.php
 0 2 0 23853 0 0
 /validate_email.js
-0 102 0 61897 0 0
+0 103 0 67524 0 0
 /3d2/calculator.js
 0 2 0 18224 0 0
 /drinkscalc/png/drink16.png
@@ -198,15 +202,15 @@
 /3d2/boxes.html
 0 1 0 1981 0 0
 /comment.php
-0 113 0 47801 5 10
+0 114 0 48406 5 11
 /contactform.css
-0 109 0 4263 0 0
+0 110 0 4700 0 0
 /js/date.js
-0 106 0 309708 0 0
+0 107 0 335517 0 0
 /dozenal/calculator.js
 0 3 0 18458 0 0
 /comment.css
-0 109 0 3105 0 0
+0 110 0 3383 0 0
 /logout
 0 3 0 43547 0 0
 /drinkscalc/png/wine39.png
@@ -214,7 +218,7 @@
 /doz/calculator.js
 0 22 0 47000 0 0
 /css/bootstrap.min.css
-0 97 0 980320 0 0
+0 98 0 1102860 0 0
 /private/urbansports
 0 4 0 39048 1 3
 /drinkscalc/png/drink24.png
@@ -224,7 +228,7 @@
 /sitemap.xml
 0 1 0 4189 0 0
 /img/pano-min.jpg
-1 9 0 147878 0 0
+1 10 0 221817 0 0
 # End Of Table - urls
 # -sites- (monthly)
 host-62-24-252-133.as13285.net
@@ -273,7 +277,7 @@ crawl-66-249-64-122.googlebot.com
 0 6 6 65692 3 1439689846
 /
 host-2-99-78-138.as13285.net
-0 1547 633 4054054 12 1439990670
+0 1563 648 4369251 13 1439995604
 /comment.php
 google-proxy-66-249-83-151.google.com
 0 7 7 248329 1 1439818088
@@ -314,7 +318,7 @@ crawl-66-249-64-194.googlebot.com
 0 1 1 4541 1 1439990777
 /
 host-2-99-78-138.as13285.net
-0 104 52 432526 2 1439990670
+0 120 67 747723 3 1439995604
 /comment.php
 crawl-66-249-64-199.googlebot.com
 0 4 4 40998 2 1439971987
@@ -327,7 +331,7 @@ ec2-54-158-161-132.compute-1.amazonaws.com
 http://bristoljon.uk/shader/
 0 1
 - (Direct Request)
-0 172
+0 174
 http://bristoljon.uk/project/3d
 0 25
 http://bristoljon.uk/project/imedic
@@ -375,7 +379,7 @@ http://bristoljon.uk/index4.php
 http://bristoljon.uk/suncalc/calculator.js
 0 2
 http://bristoljon.uk/blog/update-3
-0 133
+0 144
 http://bristoljon.uk/spoof
 0 1
 http://bristoljon.uk/3d2/
@@ -413,7 +417,7 @@ http://bristoljon.uk/dozenal/calculator.js
 http://bristoljon.uk/doz/calculator.js
 0 2
 http://bristoljon.uk/css/bootstrap.min.css
-0 3
+0 4
 http://www.bristoljon.uk/comment_tag.js
 0 3
 http://www.bristoljon.uk/css/bootstrap.min.css
@@ -429,8 +433,10 @@ http://bristoljon.uk/suncalc
 http://www.bristoljon.uk/
 0 83
 http://bristoljon.uk/project/onetimepad
-0 54
+0 55
 http://bristoljon.uk/shader
+0 1
+http://bristoljon.uk/stats/index.html
 0 1
 # End Of Table - referrers
 # -agents- 
@@ -457,13 +463,13 @@ Mozilla/5.0 (iPhone; CPU iPhone OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML,
 git/git-import/0.4.1
 0 1
 Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/43.0.2357.130 Chrome/43.0.2357.130 Saf
-0 1453
+0 1456
 Mozilla/5.0 (iPhone; CPU iPhone OS 8_1_3 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12B466 Saf
 0 9
 Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko; Google Web Preview) Chrome/27.0.1453 Safari/537.36
 0 12
 Mozilla/5.0 (Linux; Android 4.4.2; GT-I9505 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.133 Mobile 
-0 163
+0 176
 Google favicon
 0 4
 Twitterbot/1.0

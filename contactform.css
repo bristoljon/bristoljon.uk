@@ -1,7 +1,7 @@
 #socialmedia {
   margin:0 auto;
   font-size: 3em;
-  width:200px;
+  width:240px;
 }
 
 .contact {
@@ -30,4 +30,10 @@
 .input-group-addon {
   min-width:70px;
   text-align:left;
+}
+
+#footer p{
+  margin:0 auto;
+  text-align: center;
+  color:#333333;
 }

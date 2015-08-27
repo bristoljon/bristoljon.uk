@@ -128,7 +128,7 @@ function getComments(){
 }
 
 function getTags(){
-  
+
   $.ajax({
     url:"/tagger.php",
     type:"POST",
@@ -146,6 +146,47 @@ function getTags(){
     },
     error: function (jqXHR) {
       console.log("getTags failed");
+    }
+  });
+}
+
+function getImages() {
+  $.ajax({
+    url:"/image.php",
+    type:"POST",
+    data: { reference:results.id,
+            type:results.type},
+    success:function(result) {
+      var images = JSON.parse(result);
+
+      for (var i=0; i<images.length; i++){
+        $("#imageCloud").append("<li class='col-xs-4 col-md-12 col-lg-12' ><img src='"+images[i]['url']+"' class='img-thumbnail img-responsive'></li>");
+      }
+
+      if (images.length == 0) {
+        $("#imageCloud").append("<li>No images added yet, have a cat instead</li><li class='col-xs-12 col-md-12 col-lg-12' ><img src='/uploads/0-u-555H.jpg' class='img-thumbnail img-responsive'></li>");
+      }
+
+      $("#images").show();
+
+      $('.img-thumbnail').on("click",function(){
+        var src = $(this).attr('src');
+        var img = '<img src="' + src + '" class="img-responsive"/>';
+        
+        $('#myModal').modal();
+
+        $('#myModal').on('shown.bs.modal', function(){
+            $('#myModal .modal-body').html(img);
+        });
+
+        $('#myModal').on('hidden.bs.modal', function(){
+            $('#myModal .modal-body').html('');
+        });
+      });
+
+    },
+    error: function (jqXHR) {
+      console.log("getImages failed");
     }
   });
 }

@@ -95,7 +95,7 @@ function time_elapsed_string($datetime, $full = false) {
 
   background-image: url(/img/proj-min.jpg);
   background-size: cover;
-  background-position:0 0;
+  background-position:center;
   background-repeat: no-repeat;
 }
 
@@ -145,6 +145,36 @@ function time_elapsed_string($datetime, $full = false) {
 #tagcloud {
   text-align: center;
 }
+
+#images .panel-body{
+  padding:15px 0 0 15px;
+  margin:0;
+}
+
+img {
+  padding:0;
+  margin:0;
+}
+
+
+#images ul {
+  padding:0;
+  margin:0;
+}
+
+#images ul li {
+  padding:0 15px 15px 0;
+  margin:0;
+  list-style:none;
+}
+
+#images ul li img {
+  padding:0;
+  margin:0;
+  cursor: pointer;
+}
+
+
 
 
     </style>
@@ -196,6 +226,12 @@ function time_elapsed_string($datetime, $full = false) {
 
         <div class="panel-body">
 
+          <?php 
+            if ($results['latest']!="") {
+              echo "<a target='_blank' href='".$results['latest']."'>Latest Version </a><br/><br/>";
+            }
+          ?>
+
           <div class="progress">
             <div class="progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="70"
   aria-valuemin="0" aria-valuemax="100" <?php echo "style='text-align:center; width:".$results['progress']."'"; ?>>Progress
@@ -208,10 +244,10 @@ function time_elapsed_string($datetime, $full = false) {
             </div>
           </div>
 
+          <div id="tagcloud"></div>
+
           <?php 
-            if ($results['latest']!="") {
-              echo "<a target='_blank' href='".$results['latest']."'>Latest Version </a>";
-            }
+            
             if ($_SESSION['id']==="jon") {
               echo "<a target='_blank' href='/updateform.php?reference_id=".$results['id']."&reference_type=project&title=".$results['title']."'><span class='glyphicon glyphicon-wrench'></span></a><a target='_blank' href='/project/projform.php?project=".$results['title_url']."'> <span class='glyphicon glyphicon-refresh'></span></a>";
             
@@ -219,18 +255,23 @@ function time_elapsed_string($datetime, $full = false) {
           ?>
 
         </div>
-
       </div>
 
-      <div class="panel panel-primary" id="tags">
-        <div class="panel-heading">Tags</div>
-        <div class="panel-body" id="tagcloud"></div>
+
+      <div class="panel panel-primary" id="images">
+        <div class="panel-body">
+          
+          <ul id="imageCloud">
+          </ul>
+          
+        </div>  
       </div>
+
     </div>
 
 
 
-    <div class="col-md-7 col-md">
+    <div class="col-md-7">
 
       
 
@@ -291,12 +332,22 @@ function time_elapsed_string($datetime, $full = false) {
   </div>
 </div>
 
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
-<?php include($root."/email.html"); ?>
+
+<?php include($root."/contact.html"); ?>
 
 <?php include($root."/foot.html"); ?>
 
 <script type="text/javascript">
+var backgroundPos;
 
 // Get MySQL / PHP vars
 var results = {
@@ -319,7 +370,11 @@ $(document).ready(function() {
 
   getTags();
   getComments();
-  console.log($(".jumbo").css("background-position"));
+  getImages();
+
+  // Get initial background position
+  backgroundPos = $(".jumbo").css('backgroundPosition').split(" ");
+  
 })
 
 // Show / hide panel body on icon click
@@ -343,14 +398,15 @@ $("#commentBtn").click(function(event) {
   addComment();
 })
 
-// Parallax bitch
+/* //Parallax bitch
 $(document).scroll(function() {
-  if ($(window).height()>700 && $(window).width()>500) {
-    $(".jumbo").css("background-position","0px "+($(window).scrollTop()*-0.5)+"px");
-  }
+  console.log("initial:"+backgroundPos+" current:"+$(window).scrollTop()+"  "+backgroundPos[1]-$(window).scrollTop()+"%");
+
+  $(".jumbo").css("background-position","0% "+(backgroundPos[1]-$(window).scrollTop())+"%");
+  
 });
 
-
+*/
 
 </script>
 

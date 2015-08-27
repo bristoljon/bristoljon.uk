@@ -17,7 +17,7 @@ include($root."/login.php");
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="BRISTOLJON.UK - Software, Apps, Tools, Hardware, Hacking.. A place where ideas run wild like the marmalade of your mind.">
+    <meta name="description" content="BRISTOLJON.UK - A place where ideas run wild like the marmalade of your mind. Software, Apps, Tools, Hardware, Hacking.">
     
     <title>bristoljon.uk</title>
 
@@ -42,10 +42,12 @@ include($root."/login.php");
       </div>
       <p id="photocred">Photo by <a href="https://www.flickr.com/photos/sagesolar/">@sage_solar</a> on Flickr</p>
       </div>
+
     </div>
 
+    <a name="recent"></a>
     <div class="row recent">
-      <a name="recent"></a>
+      
       <div class="container" id="recent">
 
         
@@ -82,13 +84,11 @@ include($root."/login.php");
       </div>
     </div>
 
-<?php include($root."/email.html"); ?>
-
-<div id="footer">
-  <p>All contents © 2015 Jon Wyatt. All rights reserved.</p>
-</div>
+<?php include($root."/contact.html"); ?>
 
 <?php include($root."/foot.html"); ?>
+
+
 
 <script type="text/javascript">
 
