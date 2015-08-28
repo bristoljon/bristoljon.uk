@@ -12,7 +12,7 @@ include($root."/login.php");
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -52,10 +52,7 @@ include($root."/login.php");
 
       <ul class="nav navbar-nav">
 
-      	<li><a href="#recent">Recent</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-
+      	
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Projects <span class="caret"></span></a>
           <ul class="dropdown-menu inverse-dropdown">
@@ -82,6 +79,11 @@ include($root."/login.php");
             <li><a href="/blog/update-1">Update 1</a></li>    
           </ul>
         </li>
+
+        <li><a href="#recent">Recent</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+
         
       </ul>
 
@@ -105,11 +107,21 @@ include($root."/login.php");
 
     </div>
 
-    <div id="recent" class="row recent">
+    <div id="recent" ng-controller="mainController" class="row recent">
       
       <div class="container" id="recents">
 
-        
+      	<div class='panel panel-primary update' ng-repeat="update in updates">
+      		<div class='panel-body'>
+      			<i ng-if="update.type === 'New Feature'" class='fa fa-star'></i>
+      			<i ng-if="update.type === 'Code Tweak'" class='fa fa-pencil'></i>
+      			{{ update.type }} : <a ng-href="/project/{{ update.projURL }}"> {{ update.projTitle }} </a>
+      			<div class="pull-right">{{ convertDate(update.date) }}</div>
+      			<h4><a href='#'> {{ update.title }}</a></h4>
+      			
+      			<p> {{ update.content }}</p>
+      		</div>
+        </div>
       </div>
     </div>
 
@@ -146,6 +158,8 @@ include($root."/login.php");
 
 <?php include($root."/foot.html"); ?>
 
+<script src="http://code.angularjs.org/1.3.0-rc.1/angular.min.js"></script>
+
 
 
 <script type="text/javascript">
@@ -163,55 +177,44 @@ $(window).load(function() {
 
   <?php echo $openSignUpModal; ?>
 
-  getUpdates();
 });
 
-function getUpdates () {
-  $.ajax({
-    url:"/updates.php",
-    type:"POST",
-    data: { get:"recent"},
-    success:function(result) {
+var myApp = angular.module('myApp', []);
 
-      // Convert JSON to array
-      var update = JSON.parse(result);
-      var date;
+myApp.controller('mainController', ['$scope','$log','$http', function($scope,$log,$http) {
 
-      for (i=0; i<update.length; i++) {
+    $scope.convertDate = function (dater) {
+    	return timeSince(Date.parseExact(dater,"yyyy-MM-dd HH:mm:ss"));
+    };
+    
+    /*
+    var updatesrequest = new XMLHttpRequest();
+    var url = "/updates.php";
 
-        date = Date.parseExact(update[i]['date'],"yyyy-MM-dd HH:mm:ss");
+	updatesrequest.open("POST", url, true);
+	updatesrequest.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	
+    updatesrequest.onreadystatechange = function () {
+    	$scope.$apply(function() {
 
-        if (update[i]['type']==="New Feature") {
-          $("#recents").append("<div class='panel panel-primary update'><div class='panel-body'><i class='fa fa-star'></i> "+update[i]['type']+" : <a href='/project/"+update[i]['projURL']+"'>"+update[i]['projTitle']+"</a> <div class='pull-right'>"+timeSince(date)+"</div><h4><a href='"+update[i]['url']+"'>"+update[i]['title']+"</a></h4><p>"+update[i]['content']+"...</p></div></div>");
-        }
-
-        else if (update[i]['type']==="Code Tweak") {
-          $("#recents").append("<div class='panel panel-primary update'><div class='panel-body'><i class='fa fa-code'></i> "+update[i]['type']+" : <a href='/project/"+update[i]['projURL']+"'>"+update[i]['projTitle']+"</a> <div class='pull-right'>"+timeSince(date)+"</div><h4><a href='"+update[i]['url']+"'>"+update[i]['title']+"</a></h4><p>"+update[i]['content']+"...</p></div></div>");
-        }
-
-        else if (update[i]['type']==="New Geek Blog Post") {
-          $("#recents").append("<div class='panel panel-primary update'><div class='panel-body'><i class='fa fa-pencil'></i> "+update[i]['type']+": <div class='pull-right'>"+timeSince(date)+"</div><h4><a href='"+update[i]['url']+"'>"+update[i]['title']+"</a></h4><p>"+update[i]['content']+"...</p></div></div>");
-        }
-
-        else if (update[i]['type'].match(/New/g)) {
-          $("#recents").append("<div class='panel panel-primary update'><div class='panel-body'><i class='fa fa-star'></i> "+update[i]['type']+": <div class='pull-right'>"+timeSince(date)+"</div><h4><a href='"+update[i]['url']+"'>"+update[i]['title']+"</a></h4><p>"+update[i]['content']+"...</p></div></div>");
-        }
-
-        else if (update[i]['type'].match(/Edited/g)) {
-          $("#recents").append("<div class='panel panel-primary update'><div class='panel-body'><i class='fa fa-pencil'></i> "+update[i]['type']+": <a href='/project/"+update[i]['projURL']+"'>"+update[i]['projTitle']+"</a> <div class='pull-right'>"+timeSince(date)+"</div><h4><a href='"+update[i]['url']+"'>"+update[i]['title']+"</a></h4><p>"+update[i]['content']+"...</p></div></div>");
-        }
-
-        else {
-          $("#recents").append("<div class='panel panel-primary update'><div class='panel-body'>"+update[i]['type']+": <div class='pull-right'>"+timeSince(date)+"</div><h4><a href='"+update[i]['url']+"'>"+update[i]['title']+"</a></h4><p>"+update[i]['content']+"...</p></div></div>");
-        }
-      }
-    },
-
-    error: function (jqXHR) {
-      console.log("Get updates failed");
+	    	if (updatesrequest.readyState == 4 && updatesrequest.status ==200) {
+	    		$scope.updates = angular.fromJson(updatesrequest.responseText);
+	    	}
+	    })
     }
-  });
-}
+
+	updatesrequest.send("get=recent");
+	*/
+
+	$http.post('/updates.php', {get:'recent'}).
+  	then(function(response) {
+    	$scope.updates = angular.fromJson(response.data);
+    	console.log(response);
+  	}, function(response) {
+	    $log.log("Failed")
+  	});
+    
+}]);
 
 </script>
    
