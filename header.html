@@ -46,74 +46,8 @@
             <li><a href="/blog/update-1">Update 1</a></li>    
           </ul>
         </li>
-        <li><a href="/#recent">Recent</a></li>
-        <li><a href="/#about">About</a></li>
-        <li><a href="/#contact">Contact</a></li>
       </ul>
 
     </div>    
   </div>
 </nav>
-
-<div id="signupModal" class="modal fade" role="dialog" aria-hidden="false">
-  <div class="modal-dialog">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Get involved</h4>
-        <?php echo $error; ?>
-      </div>
-      <div class="modal-body">
-
-        <form method="post" onsubmit="return validateAll()">
-
-          <div  id="newName" class="form-group has-feedback">
-            <label for="newName">Name</label>
-            <label class="pull-right"></label>
-            <input value="<?php echo $_POST['newName']; ?>" name="newName" type="text" class="form-control" placeholder="Your name">
-            <span style ="color:red" class="glyphicon glyphicon-remove form-control-feedback"></span>
-          </div>
-
-          <div id="newUser" class="form-group has-feedback">
-            <label for="newUser">Username</label>
-             <label class="pull-right"></label>
-            <input value="<?php echo $_POST['newUser']; ?>" name="newUser" type="text" class="form-control" placeholder="Your username">
-            <span style ="color:red" class="glyphicon glyphicon-remove form-control-feedback"></span>
-          </div>
-
-          <div id="newEmail" class="form-group has-feedback">
-            <label for="newEmail">e-mail</label>
-             <label class="pull-right"></label>
-            <input value="<?php echo $_POST['newEmail']; ?>" name="newEmail" type="text" class="form-control" placeholder="e-mail address">
-            <span style ="color:red" class="glyphicon glyphicon-remove form-control-feedback"></span>
-          </div>
-
-          <div id="newPass" class="form-group has-feedback">
-            <label for="newPass">Password</label>
-             <label class="pull-right"></label>
-            <input value="<?php echo $_POST['newPass']; ?>" name="newPass" type="password" class="form-control" placeholder="Password">
-            <span style ="color:red" class="glyphicon glyphicon-remove form-control-feedback"></span>
-          </div>
-
-          <div id="conPass" class="form-group has-feedback">
-            <label for="conPass">Confirm Password</label>
-            <label class="pull-right"></label>
-            <input value="<?php echo $_POST['conPass']; ?>" name="conPass" id="conPass" type="password" class="form-control" placeholder="Confirm Password">
-            <span style ="color:red" class="glyphicon glyphicon-remove form-control-feedback"></span>
-          </div>
-
-          <br/>
-          <div id="test" class="form-group has-feedback">
-            <label for="answer">Access code? Request one <a href="#contact"> here</a></label>
-             <label class="pull-right"></label>
-            <input value="<?php echo $_POST['answer']; ?>" name="answer" class="form-control">
-            <span style ="color:red" class="glyphicon glyphicon-remove form-control-feedback"></span>
-          </div>
-          <input id="signinBtn" type="submit" name="submit" value="Sign Up" class="pull-right btn btn-danger">
-        </form>
-
-      </div>
-    </div>
-  </div>
-</div>

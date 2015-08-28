@@ -184,6 +184,7 @@ img {
 <body>
     
 <?php include($root."/header.html"); ?>
+<?php include($root."/signupmodal.html"); ?>
 
 <div id="home" class="row jumbo">
   <div class="container">
