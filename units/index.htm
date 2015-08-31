@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en-us" ng-app="myApp">
+
+    <head>
+        <title>Time is Money</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta charset="UTF-8">
+
+        <!-- load bootstrap and fontawesome via CDN -->
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+        <style>
+            html {
+				background: radial-gradient(circle, #FFFF00 40%, #FFA500);
+				background-size: cover;
+				background-repeat: no-repeat;
+			}
+
+			.content {
+				margin-top: 70px;
+			}
+
+        </style>
+        
+        <!-- jQuery, Angular, Bootstrap scripts -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="http://code.angularjs.org/1.3.0-rc.1/angular.min.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="app.js"></script>
+    </head>
+
+    <body>
+
+		<div class="container" ng-controller="mainController">
+		  <h2>Time is Money</h2>
+		  <p>..Money is time so I keep 7'o'clock in the bank and gain interest in the hour of God, I'm saving to by my freedom. God grant me wings, I'm too fly not to fly.</p>
+		  <ul class="nav nav-tabs">
+		    <li class="active"><a data-toggle="tab" href="#you">Details</a></li>
+		    <li><a data-toggle="tab" href="#units">Units</a></li>
+		    <li><a data-toggle="tab" href="#convert">Convert</a></li>
+		    <li><a data-toggle="tab" href="#count">Counter</a></li>
+		  </ul>
+
+		  <div class="tab-content">
+		    <div id="you" class="tab-pane fade in active">
+		      <h3>You</h3>
+		      <div id="age" class="form-group">
+		        <label for="age">How old are you?</label>
+		        <input name="age" type="text" class="form-control">
+		      </div>
+
+
+		      <h3>Work</h3>
+
+		      <div class="form-group">
+		        <label for="pay">How much do you get paid?</label>
+		        <div class="input-group">
+		          <input id="pay" name="pay" type="text" class="form-control">
+		          <span class="input-group-btn">
+		            <select class="btn">
+		              <option>/hour</option>
+		              <option>/day</option>
+		              <option>/week</option>
+		              <option>/month</option>
+		            </select>
+		          </span>
+		        </div>
+		      </div>
+
+		      <div class="form-group">
+		        <label for="hours">How many hours do you work?</label>
+		        <div class="input-group">
+		          <input id="hours" name="hours" type="text" class="form-control">
+		          <span class="input-group-btn">
+		            <select class="btn">
+		              <option>/day</option>
+		              <option>/week</option>
+		              <option>/month</option>
+		            </select>
+		          </span>
+		        </div>
+		      </div>
+
+
+		      <h3>Save</h3>
+		      <div class="form-group">
+		        <label for="save">How much do you save?</label>
+		        <div class="input-group">
+		          <input id="save" name="save" type="text" class="form-control">
+		          <span class="input-group-btn">
+		            <select class="btn">
+		              <option>/day</option>
+		              <option>/week</option>
+		              <option>/month</option>
+		            </select>
+		          </span>
+		        </div>
+		        <div class="form-group">
+		          <label for="saved">How much have you saved already?</label>
+		          <input id="saved" name="saved" type="text" class="form-control">
+		        </div>
+		        <div class="form-group">
+		          <label for="saveFor">What are you saving for?</label>
+		          <input id="saveFor" name="saveFor" type="text" class="form-control">
+		        </div>
+		        <div class="form-group">
+		          <label for="saveForCost">How much does it/he/she/they cost?</label>
+		          <input id="saveForCost" name="saveForCost" type="text" class="form-control">
+		        </div>
+		      </div>
+
+		    </div>
+
+		    <div id="units" class="tab-pane fade">
+		      <h3>Money</h3>
+		      <table class="table table-striped">
+		        <thead>
+		          <tr>
+		            <th>Unit</th>
+		            <th>Cost</th>
+		          </tr>
+		        </thead>
+		        <tbody>
+		          <tr>
+		            <td>Lunch Special at Jerk Island</td>
+		            <td>£3</td>
+		          </tr>
+		          <tr>
+		            <td>Playstation 4</td>
+		            <td>£300</td>
+		          </tr>
+		          <tr>
+		            <td>Central London Studio</td>
+		            <td>£300,000</td>
+		          </tr>
+		        </tbody>
+		      </table>
+
+		      <h3>Time</h3>
+		      <table class="table table-striped">
+		        <thead>
+		          <tr>
+		            <th>Unit</th>
+		            <th>Hours</th>
+		          </tr>
+		        </thead>
+		        <tbody>
+		          <tr>
+		            <td>Tommy Tank (average male)</td>
+		            <td>0.4</td>
+		          </tr>
+		          <tr>
+		            <td>Bristol - London by bus</td>
+		            <td>3</td>
+		          </tr>
+		          <tr>
+		            <td>Crossing the Atlantic by pedalo</td>
+		            <td>2664</td>
+		          </tr>
+		        </tbody>
+		      </table>
+		      
+		    </div>
+		    <div id="convert" class="tab-pane fade">
+		      <br/>
+		      <div class="row">
+
+		        <div class="col-xs-6">
+		          <div class="form-group">
+		            <label for="inputVal">Value</label>
+		            <input id="inputVal" name="inputVal" type="text" class="form-control">
+		          </div> 
+		        </div>  
+
+		        <div class="col-xs-6">
+		          <div class="form-group">
+		            <label for="inUnits">Units</label>
+		            <select class="form-control" id="inUnits">
+		              <option>£ GBP</option>
+		              <option>Hours</option>
+		            </select>
+		          </div>
+		        </div> 
+
+		      </div>
+
+		      <div class="row">
+		        <div class="col-xs-6 col-xs-offset-3">
+
+		          <div class="form-group">
+		            <label for="outUnits">Convert to</label>
+		            <div class="input-group">
+		              <select class="form-control" id="outUnits"></select>
+		              <span class="input-group-btn">
+		                <input type="submit" id="convertBtn" value="Convert" class="btn btn-success">
+		              </span>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+
+		      <div class="row">
+		        <div id="conOutput" class="col-xs-2 col-xs-offset-5">
+
+
+		        </div>
+		      </div>
+		    </div>
+
+		    <div id="count" class="tab-pane fade">
+		      <h3>Counters</h3>
+		      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+		    </div>
+		  </div>
+		</div>
+		  
+		</div>
+
+    </body>
+</html>
