@@ -2,32 +2,76 @@ var myApp = angular.module('myApp', []);
 
 myApp.controller('mainController', ['$scope','$filter','$log','$timeout', function($scope,$filter,$log,$timeout) {
 
-    $scope.handle="";
-
-    $scope.lowercase = function () {
-    	return $filter('lowercase')($scope.handle);
-    };
-
-    $scope.characters = 5;
-    
-    var updatesrequest = new XMLHttpRequest();
-    var url = "/updates.php";
-
-	updatesrequest.open("POST", url, true);
-	updatesrequest.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-	
-    updatesrequest.onreadystatechange = function () {
-    	$scope.$apply(function() {
-
-	    	if (updatesrequest.readyState == 4 && updatesrequest.status ==200) {
-	    		$scope.updates = JSON.parse(updatesrequest.responseText);
-	    	}
-	    	else $log.log("Failed");
-
-	    	$log.log($scope.updates);
-	    })
+    function Unit (title,pounds) {
+    	this.title = title;
+    	this.pounds = pounds;
     }
 
-	updatesrequest.send("get=recent");
+    var jerk = new Unit ("Lunch special at Jerk Island",3);
+    var ps4 = new Unit ("Playstation 4",300);
+
+    $scope.moneyUnits = [jerk,ps4];
+
+    $scope.customMoneyAdd = function() {
+    	$log.log("clicked");
+    	$scope.moneyUnits.push(new Unit($scope.customMoneyTitle,$scope.customMoneyPounds));
+    }
+
+    $scope.removeUnit = function() {
+    	$log.log("clicked");
+    }
+
+    $scope.calculatePay = function() {
+    	var divideBy = 0;
+
+    	if ($scope.payPer === "/hour") {
+    		$scope.payPerHour = $scope.pay
+    	}
+
+    	else {
+
+	    	if ($scope.payPer === "/day") {
+	    		divideBy = 24;
+	    	}
+
+	    	if ($scope.payPer === "/week") {
+	    		divideBy = 24*7;
+	    	}
+
+	    	if ($scope.payPer === "/month") {
+	    		divideBy = 24*7*30;
+	    	}
+
+	    	if ($scope.payPer === "/year") {
+	    		divideBy = 24*7*365;
+	    	}
+
+	    	$scope.payPerHour = ($scope.pay/divideBy).toFixed(2);
+	    	$scope.truePayPerHour = $scope.payPerHour*$scope.percentWorking;
+    	}
+    }
+
+    $scope.calculateHours = function() {
+    	var divideBy = 0;
+    	
+    	if ($scope.hoursPer === "/day") {
+    		$scope.hoursPerDay = $scope.hours;
+    	}
+    	else {
+	    	if ($scope.hoursPer === "/week") {
+	    		divideBy = 7;
+	    	}
+	    	if ($scope.hoursPer === "/month") {
+	    		divideBy = 7*30;
+	    	}
+
+	    	$scope.hoursPerDay = ($scope.hours/divideBy).toFixed(2);
+    	}
+    	
+    	$scope.percentWorking = (($scope.hoursPerDay/24)*100).toFixed(2);
+
+    	$scope.yearsRemaining = 79.2-$scope.age;
+    	$scope.workYearsRemaining = ((65-$scope.age)*$scope.percentWorking).toFixed(2);
+  	}
     
 }]);

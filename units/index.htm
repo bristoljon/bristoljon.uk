@@ -31,188 +31,203 @@
     <body>
 
 		<div class="container" ng-controller="mainController">
-		  <h2>Time is Money</h2>
-		  <p>..Money is time so I keep 7'o'clock in the bank and gain interest in the hour of God, I'm saving to by my freedom. God grant me wings, I'm too fly not to fly.</p>
-		  <ul class="nav nav-tabs">
-		    <li class="active"><a data-toggle="tab" href="#you">Details</a></li>
-		    <li><a data-toggle="tab" href="#units">Units</a></li>
-		    <li><a data-toggle="tab" href="#convert">Convert</a></li>
-		    <li><a data-toggle="tab" href="#count">Counter</a></li>
-		  </ul>
 
-		  <div class="tab-content">
-		    <div id="you" class="tab-pane fade in active">
-		      <h3>You</h3>
-		      <div id="age" class="form-group">
-		        <label for="age">How old are you?</label>
-		        <input name="age" type="text" class="form-control">
-		      </div>
+			<h2>Time is Money</h2>
+			<p>Money is Time, so I keep 7'o'clock in the bank and gain interest in the hour of God. I'm saving to by my freedom. God grant me wings. I'm too fly not to fly.</p>
+			<ul class="nav nav-tabs">
+				<li class="active"><a data-toggle="tab" href="#you">Details</a></li>
+				<li><a data-toggle="tab" href="#units">Units</a></li>
+				<li><a data-toggle="tab" href="#convert">Convert</a></li>
+				<li><a data-toggle="tab" href="#count">Counter</a></li>
+				<li><a data-toggle="tab" href="#stats">Stats</a></li>
+			</ul>
 
+			<div class="tab-content">
 
-		      <h3>Work</h3>
+				<div id="you" class="tab-pane fade in active">
 
-		      <div class="form-group">
-		        <label for="pay">How much do you get paid?</label>
-		        <div class="input-group">
-		          <input id="pay" name="pay" type="text" class="form-control">
-		          <span class="input-group-btn">
-		            <select class="btn">
-		              <option>/hour</option>
-		              <option>/day</option>
-		              <option>/week</option>
-		              <option>/month</option>
-		            </select>
-		          </span>
-		        </div>
-		      </div>
-
-		      <div class="form-group">
-		        <label for="hours">How many hours do you work?</label>
-		        <div class="input-group">
-		          <input id="hours" name="hours" type="text" class="form-control">
-		          <span class="input-group-btn">
-		            <select class="btn">
-		              <option>/day</option>
-		              <option>/week</option>
-		              <option>/month</option>
-		            </select>
-		          </span>
-		        </div>
-		      </div>
+					<h3>You</h3>
+					<div id="age" class="form-group">
+						<label for="age">How old are you?</label>
+						<input ng-model="age" name="age" type="text" class="form-control">
+					</div>
 
 
-		      <h3>Save</h3>
-		      <div class="form-group">
-		        <label for="save">How much do you save?</label>
-		        <div class="input-group">
-		          <input id="save" name="save" type="text" class="form-control">
-		          <span class="input-group-btn">
-		            <select class="btn">
-		              <option>/day</option>
-		              <option>/week</option>
-		              <option>/month</option>
-		            </select>
-		          </span>
-		        </div>
-		        <div class="form-group">
-		          <label for="saved">How much have you saved already?</label>
-		          <input id="saved" name="saved" type="text" class="form-control">
-		        </div>
-		        <div class="form-group">
-		          <label for="saveFor">What are you saving for?</label>
-		          <input id="saveFor" name="saveFor" type="text" class="form-control">
-		        </div>
-		        <div class="form-group">
-		          <label for="saveForCost">How much does it/he/she/they cost?</label>
-		          <input id="saveForCost" name="saveForCost" type="text" class="form-control">
-		        </div>
-		      </div>
+					<h3>Work</h3>
 
-		    </div>
+					<div class="form-group">
 
-		    <div id="units" class="tab-pane fade">
-		      <h3>Money</h3>
-		      <table class="table table-striped">
-		        <thead>
-		          <tr>
-		            <th>Unit</th>
-		            <th>Cost</th>
-		          </tr>
-		        </thead>
-		        <tbody>
-		          <tr>
-		            <td>Lunch Special at Jerk Island</td>
-		            <td>£3</td>
-		          </tr>
-		          <tr>
-		            <td>Playstation 4</td>
-		            <td>£300</td>
-		          </tr>
-		          <tr>
-		            <td>Central London Studio</td>
-		            <td>£300,000</td>
-		          </tr>
-		        </tbody>
-		      </table>
+						<label for="hours">How many hours do you work?</label>
+						<div class="input-group">
+						  <input ng-change="calculateHours()" ng-model="hours" id="hours" name="hours" type="text" class="form-control">
+						  <span class="input-group-btn">
+						    <select ng-model="hoursPer" ng-change="calculateHours()" class="btn">
+						      <option>/day</option>
+						      <option selected>/week</option>
+						      <option>/month</option>
+						    </select>
+						  </span>
+						</div>
 
-		      <h3>Time</h3>
-		      <table class="table table-striped">
-		        <thead>
-		          <tr>
-		            <th>Unit</th>
-		            <th>Hours</th>
-		          </tr>
-		        </thead>
-		        <tbody>
-		          <tr>
-		            <td>Tommy Tank (average male)</td>
-		            <td>0.4</td>
-		          </tr>
-		          <tr>
-		            <td>Bristol - London by bus</td>
-		            <td>3</td>
-		          </tr>
-		          <tr>
-		            <td>Crossing the Atlantic by pedalo</td>
-		            <td>2664</td>
-		          </tr>
-		        </tbody>
-		      </table>
-		      
-		    </div>
-		    <div id="convert" class="tab-pane fade">
-		      <br/>
-		      <div class="row">
+						<label for="pay">How much do you get paid?</label>
+						<div class="input-group">
+						  <input ng-change="calculatePay()" ng-model="pay" id="pay" name="pay" type="text" class="form-control">
+						  <span class="input-group-btn">
+						    <select ng-model="payPer" ng-change="calculatePay()" class="btn">
+						      <option>/hour</option>
+						      <option>/day</option>
+						      <option>/week</option>
+						      <option>/month</option>
+						      <option selected>/year</option>
+						    </select>
+						  </span>
+						</div>
 
-		        <div class="col-xs-6">
-		          <div class="form-group">
-		            <label for="inputVal">Value</label>
-		            <input id="inputVal" name="inputVal" type="text" class="form-control">
-		          </div> 
-		        </div>  
-
-		        <div class="col-xs-6">
-		          <div class="form-group">
-		            <label for="inUnits">Units</label>
-		            <select class="form-control" id="inUnits">
-		              <option>£ GBP</option>
-		              <option>Hours</option>
-		            </select>
-		          </div>
-		        </div> 
-
-		      </div>
-
-		      <div class="row">
-		        <div class="col-xs-6 col-xs-offset-3">
-
-		          <div class="form-group">
-		            <label for="outUnits">Convert to</label>
-		            <div class="input-group">
-		              <select class="form-control" id="outUnits"></select>
-		              <span class="input-group-btn">
-		                <input type="submit" id="convertBtn" value="Convert" class="btn btn-success">
-		              </span>
-		            </div>
-		          </div>
-		        </div>
-		      </div>
-
-		      <div class="row">
-		        <div id="conOutput" class="col-xs-2 col-xs-offset-5">
+					</div>
 
 
-		        </div>
-		      </div>
-		    </div>
+					<h3>Save</h3>
+					<div class="form-group">
 
-		    <div id="count" class="tab-pane fade">
-		      <h3>Counters</h3>
-		      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-		    </div>
-		  </div>
+					  	<label for="save">How much do you save?</label>
+					  	<div class="input-group">
+							<input ng-model="save" id="save" name="save" type="text" class="form-control">
+					      	<span class="input-group-btn">
+					            <select ng-model="savePer" class="btn">
+					              <option>/day</option>
+					              <option>/week</option>
+					              <option>/month</option>
+					            </select>
+					    	</span>
+					    </div>
+
+					    <label for="saved">How much have you saved already?</label>  
+					    <input ng-model="saved" id="saved" name="saved" type="text" class="form-control">
+					    
+					    <label for="saveFor">What are you saving for?</label>
+					    <input ng-model="saveFor" id="saveFor" name="saveFor" type="text" class="form-control">
+					    
+					    <label for="saveForCost">How much does it/he/she/they cost?</label>
+					    <input ng-model="saveForCost" id="saveForCost" name="saveForCost" type="text" class="form-control">      
+					</div>
+				</div>
+
+
+				<div id="units" class="tab-pane fade">
+					<h3>Money</h3>
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>Unit</th>
+								<th>Cost</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="unit in moneyUnits">
+								<td class="col-sm-8 col-md-8"> {{ unit.title }} </td>
+								<td class="col-sm-3 col-md-3"> {{ unit.pounds }} </td>
+								<td class="col-sm-1 col-md-1"><a ng-click="removeUnit()"><span class="glyphicon glyphicon-minus"></i></a></td>
+							</tr>
+							<tr>
+								<td><input class="form-control" type="text" ng-model="customMoneyTitle"></td>
+								<td><div class="input-group">
+      <input ng-model="customMoneyPounds" type="text" class="form-control" placeholder="£ GBP">
+      <span class="input-group-btn">
+        <button ng-click="customMoneyAdd()" class="btn btn-default" type="button">Go!</button>
+      </span>
+    </div><!-- /input-group -->
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3>Time</h3>
+					<table class="table table-striped">
+					<thead>
+					  <tr>
+					    <th>Unit</th>
+					    <th>Hours</th>
+					  </tr>
+					</thead>
+					<tbody>
+					  <tr>
+					    <td>Tommy Tank (average male)</td>
+					    <td>0.4</td>
+					  </tr>
+					  <tr>
+					    <td>Bristol - London by bus</td>
+					    <td>3</td>
+					  </tr>
+					  <tr>
+					    <td>Crossing the Atlantic by pedalo</td>
+					    <td>2664</td>
+					  </tr>
+					</tbody>
+					</table>
+				  
+				</div>
+
+				<div id="convert" class="tab-pane fade">
+				  <br/>
+				  <div class="row">
+
+				    <div class="col-xs-6">
+				      <div class="form-group">
+				        <label for="inputVal">Value</label>
+				        <input ng-model="inputVal" id="inputVal" name="inputVal" type="text" class="form-control">
+				      </div> 
+				    </div>  
+
+				    <div class="col-xs-6">
+				      <div class="form-group">
+				        <label for="inUnits">Units</label>
+				        <select ng-model="inUnits" class="form-control" id="inUnits">
+				          <option>£ GBP</option>
+				          <option>Hours</option>
+				        </select>
+				      </div>
+				    </div> 
+
+				  </div>
+
+				  <div class="row">
+				    <div class="col-xs-6 col-xs-offset-3">
+
+				      <div class="form-group">
+				        <label for="outUnits">Convert to</label>
+				        <div class="input-group">
+				          <select class="form-control" id="outUnits"></select>
+				          <span class="input-group-btn">
+				            <button ng-click="convertBtn()"></button>
+				          </span>
+				        </div>
+				      </div>
+				    </div>
+				  </div>
+
+				  <div class="row">
+				    <div id="conOutput" class="col-xs-2 col-xs-offset-5">
+
+
+				    </div>
+				  </div>
+				</div>
+
+				<div id="count" class="tab-pane fade">
+					
+				</div>
+
+				<div id="stats" class="tab-pane fade">
+					<h3>Statistics</h3>
+					<p> You currently work for £{{ payPerHour }} per hour. This means on average you earn £{{ truePayPerHour }} for every hour lived.</p>
+					<p> You average {{ hoursPerDay }} hours a day working, that's {{ percentWorking }}% of your life.</p>
+					<p> At age {{ age }}, you only have about {{ yearsRemaining }} years left.</p>
+					<p> If you retire at 65, you'll spend {{ workYearsRemaining }} years of that working.</p>
+				</div>
+			</div>
 		</div>
-		  
+
 		</div>
 
     </body>
