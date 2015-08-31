@@ -181,13 +181,14 @@ $(window).load(function() {
 
 var myApp = angular.module('myApp', []);
 
-myApp.controller('mainController', ['$scope','$log','$http', function($scope,$log,$http) {
+myApp.controller('mainController', ['$scope','$log','$http','$timeout',function($scope,$log,$http,$timeout) {
 
     $scope.convertDate = function (dater) {
     	return timeSince(Date.parseExact(dater,"yyyy-MM-dd HH:mm:ss"));
     };
     
     /*
+    
     var updatesrequest = new XMLHttpRequest();
     var url = "/updates.php";
 
@@ -204,15 +205,25 @@ myApp.controller('mainController', ['$scope','$log','$http', function($scope,$lo
     }
 
 	updatesrequest.send("get=recent");
-	*/
+	
+    
+    */
 
-	$http.post('/updates.php', {get:'recent'}).
+
+
+	$http.post('/updates.php','get=recent').
   	then(function(response) {
-    	$scope.updates = angular.fromJson(response.data);
-    	console.log(response);
+  		$scope.updates = angular.fromJson(response.data);
+    	$log.log($scope.updates)
+  
   	}, function(response) {
-	    $log.log("Failed")
+	    $log.log("Failed");
   	});
+
+
+
+	
+	  
     
 }]);
 

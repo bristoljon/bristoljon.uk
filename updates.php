@@ -38,7 +38,7 @@ if ($_POST['get']==="recent") {
 
 
 
-
+header('Content-Type: application/json');
 echo json_encode($output);
 
 ?>
