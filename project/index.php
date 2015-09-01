@@ -227,11 +227,13 @@ img {
 
         <div class="panel-body">
 
-          <?php 
-            if ($results['latest']!="") {
-              echo "<a target='_blank' href='".$results['latest']."'>Latest Version </a><br/><br/>";
-            }
-          ?>
+          <div>
+            <?php 
+              if ($results['latest']!="") {
+                echo "<a  id='latestVersion' target='_blank' href='".$results['latest']."'>Latest Version</a><br/><br/>";
+              }
+            ?>
+          </div>
 
           <div class="progress">
             <div class="progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="70"

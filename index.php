@@ -111,10 +111,10 @@ include($root."/login.php");
       
       <div class="container" id="recents">
 
-      	<div class='panel panel-primary update' ng-repeat="update in updates">
+      	<div class='panel panel-primary update' ng-cloak ng-repeat="update in updates">
       		<div class='panel-body'>
-      			<i ng-if="update.type === 'New Feature'" class='fa fa-star'></i>
-      			<i ng-if="update.type === 'Code Tweak'" class='fa fa-pencil'></i>
+      			<i ng-if="update.type.indexOf('New') > -1" class='fa fa-star'></i>
+      			<i ng-if="update.type.indexOf('Edited') > -1" class='fa fa-pencil'></i>
       			{{ update.type }} : <a ng-href="/project/{{ update.projURL }}"> {{ update.projTitle }} </a>
       			<div class="pull-right">{{ convertDate(update.date) }}</div>
       			<h4><a href='#'> {{ update.title }}</a></h4>
@@ -187,8 +187,9 @@ myApp.controller('mainController', ['$scope','$log','$http','$timeout',function(
     	return timeSince(Date.parseExact(dater,"yyyy-MM-dd HH:mm:ss"));
     };
     
-    /*
     
+    /* 
+    // Working pure js xhr request
     var updatesrequest = new XMLHttpRequest();
     var url = "/updates.php";
 
@@ -207,11 +208,11 @@ myApp.controller('mainController', ['$scope','$log','$http','$timeout',function(
 	updatesrequest.send("get=recent");
 	
     
-    */
+    
+*/	// Change default POST header so that PHP receives parameters correctly
+	$http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
 
-
-
-	$http.post('/updates.php','get=recent').
+	$http.post('/updates.php',"get=recent").
   	then(function(response) {
   		$scope.updates = angular.fromJson(response.data);
     	$log.log($scope.updates)

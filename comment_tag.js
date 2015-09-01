@@ -139,6 +139,10 @@ function getTags(){
 
       for (var i=0; i<tags.length; i++){
         $("#tagcloud").append("<a href='#'>"+tags[i]['name']+"</a>, ");
+        if (tags[i]['name']==="Responsive") {
+          console.log("Responsve");
+          $("#latestVersion").append("<span class='glyphicon glyphicon-phone' data-toggle='tooltip' title='Mobile device ready'></span>");
+        }
       }
 
       $("#tags").show();
@@ -160,11 +164,11 @@ function getImages() {
       var images = JSON.parse(result);
 
       for (var i=0; i<images.length; i++){
-        $("#imageCloud").append("<li class='col-xs-4 col-md-12 col-lg-12' ><img src='"+images[i]['url']+"' class='img-thumbnail img-responsive'></li>");
+        $("#imageCloud").append("<li class='col-xs-3 col-sm-2 col-md-12 col-lg-12' ><img src='"+images[i]['url']+"' class='img-thumbnail img-responsive'></li>");
       }
 
       if (images.length == 0) {
-        $("#imageCloud").append("<li>No images added yet, have a cat instead</li><li class='col-xs-12 col-md-12 col-lg-12' ><img src='/uploads/0-u-555H.jpg' class='img-thumbnail img-responsive'></li>");
+        $("#imageCloud").append("<li>No images added yet, have a cat instead</li><li class='col-xs-3 col-sm-2 col-md-12 col-lg-12' ><img src='/uploads/0-u-555H.jpg' class='img-thumbnail img-responsive'></li>");
       }
 
       $("#images").show();

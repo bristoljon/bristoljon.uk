@@ -9,14 +9,17 @@
         <!-- load bootstrap and fontawesome via CDN -->
         <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
         <style>
-            html {
-				background: radial-gradient(circle, #FFFF00 40%, #FFA500);
-				background-size: cover;
-				background-repeat: no-repeat;
-			}
+
 
 			.content {
 				margin-top: 70px;
+			}
+
+			.equals {
+				text-align: center;
+				font-size: 3em;
+				font-weight: bold;
+				padding-top: 30px;
 			}
 
         </style>
@@ -33,7 +36,7 @@
 		<div class="container" ng-controller="mainController">
 
 			<h2>Time is Money</h2>
-			<p>Money is Time, so I keep 7'o'clock in the bank and gain interest in the hour of God. I'm saving to by my freedom. God grant me wings. I'm too fly not to fly.</p>
+			<p>Money is Time, so I keep 7'o'clock in the bank and gain interest in the hour of God. I'm saving to by my freedom.</p>
 			<ul class="nav nav-tabs">
 				<li class="active"><a data-toggle="tab" href="#you">Details</a></li>
 				<li><a data-toggle="tab" href="#units">Units</a></li>
@@ -172,39 +175,44 @@
 				  <br/>
 				  <div class="row">
 
-				    <div class="col-xs-6">
+				    <div class="col-xs-5">
 				      <div class="form-group">
-				        <label for="inputVal">Value</label>
-				        <input ng-model="inputVal" id="inputVal" name="inputVal" type="text" class="form-control">
+				        <label for="inVal">Input</label>
+				        <input ng-model="inVal" id="inVal" name="inVal" type="text" class="form-control">
+				        <select ng-model="inUnits" ng-change="convertUnits()" class="form-control" id="inUnits">
+				          <optgroup label="Time">
+				          		<option ng-repeat="unit in timeUnits">{{ unit.title }}</option>
+				          	</optgroup>
+				          	<optgroup label="Money">
+				          		<option ng-repeat="unit in moneyUnits">{{ unit.title }}</option>
+				          	</optgroup>
+				        </select>
 				      </div> 
 				    </div>  
 
-				    <div class="col-xs-6">
-				      <div class="form-group">
-				        <label for="inUnits">Units</label>
-				        <select ng-model="inUnits" class="form-control" id="inUnits">
-				          <option>£ GBP</option>
-				          <option>Hours</option>
-				        </select>
-				      </div>
+				    <div class="equals col-xs-2">
+				    	=
 				    </div> 
 
-				  </div>
-
-				  <div class="row">
-				    <div class="col-xs-6 col-xs-offset-3">
-
+				    <div class="col-xs-5">
 				      <div class="form-group">
-				        <label for="outUnits">Convert to</label>
-				        <div class="input-group">
-				          <select class="form-control" id="outUnits"></select>
-				          <span class="input-group-btn">
-				            <button ng-click="convertBtn()"></button>
-				          </span>
-				        </div>
-				      </div>
+				        <label for="outVal">Output</label>
+				        <input id="outVal" name="outVal" type="text" class="form-control" value="{{ outVal }}">
+				        <select ng-model="outUnits" ng-change="convertUnits()" class="form-control" id="outUnits">
+				        	<optgroup label="Time">
+				          		<option ng-repeat="unit in timeUnits">{{ unit.title }}</option>
+				          	</optgroup>
+				          	<optgroup label="Money">
+				          		<option ng-repeat="unit in moneyUnits">{{ unit.title }}</option>
+				          	</optgroup>
+				         
+				        </select>
+				      </div> 
 				    </div>
+
 				  </div>
+
+				  
 
 				  <div class="row">
 				    <div id="conOutput" class="col-xs-2 col-xs-offset-5">
@@ -220,10 +228,11 @@
 
 				<div id="stats" class="tab-pane fade">
 					<h3>Statistics</h3>
-					<p> You currently work for £{{ payPerHour }} per hour. This means on average you earn £{{ truePayPerHour }} for every hour lived.</p>
-					<p> You average {{ hoursPerDay }} hours a day working, that's {{ percentWorking }}% of your life.</p>
+					<p> You currently work for £{{ truePayPerHour.toFixed(2) }} per hour.</p>
+					<p> You work {{ workPerDay.toFixed(2) }} hours a day, that's {{ percentWorking.toFixed(1) }}% of your life.</p>
+					<p>This means on average you earn £{{ payPerHour.toFixed(2) }} for every hour lived.</p>
 					<p> At age {{ age }}, you only have about {{ yearsRemaining }} years left.</p>
-					<p> If you retire at 65, you'll spend {{ workYearsRemaining }} years of that working.</p>
+					<p> If you retire at 65, you'll spend {{ workYearsRemaining.toFixed(1) }} years of that working.</p>
 				</div>
 			</div>
 		</div>
