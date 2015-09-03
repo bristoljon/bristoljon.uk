@@ -8,7 +8,8 @@ Date.prototype.toDateInputValue = (function() {
 // Add method to remove object from array based on unit title
 Array.prototype.remove = function(title) {
     for (i=0; i<this.length; i++) {
-      if (this[i].title === title) this.splice(i);
+    	console.log(this[i].title);
+      if (this[i].title === title) this.splice(i,1);
     }
     return this;
 };
@@ -59,8 +60,13 @@ myApp.controller('mainController', ['$scope','$filter','$log','$timeout', functi
     	$scope.timeUnits.push(new timeUnit($scope.customMoneyTitle,$scope.customMoneyPounds));
     }
 
-    $scope.removeUnit = function(unit) {
+    $scope.removeMoneyUnit = function(unit) {
     	$scope.moneyUnits.remove(unit);
+    }
+
+    $scope.removeTimeUnit = function(unit) {
+    	console.log("remove time");
+    	$scope.timeUnits.remove(unit);
     }
 
     $scope.sortTimeBy = function (what) {
