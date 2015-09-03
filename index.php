@@ -51,7 +51,7 @@ include($root."/login.php");
       
       <div class="container" id="recents">
 
-      	<div class='panel panel-primary update' ng-cloak ng-repeat="update in updates">
+      	<div class='panel panel-primary update' ng-cloak class="ng-cloak" ng-repeat="update in updates">
       		<div class='panel-body'>
       			<i ng-if="update.type.indexOf('New') > -1" class='fa fa-star'></i>
       			<i ng-if="update.type.indexOf('Edited') > -1" class='fa fa-pencil'></i>
