@@ -57,7 +57,7 @@ include($root."/login.php");
       			<i ng-if="update.type.indexOf('Edited') > -1" class='fa fa-pencil'></i>
       			{{ update.type }} : <a ng-href="/project/{{ update.projURL }}"> {{ update.projTitle }} </a>
       			<div class="pull-right">{{ convertDate(update.date) }}</div>
-      			<h4><a href='#'> {{ update.title }}</a></h4>
+      			<h4><a ng-href="{{ update.latest || update.url }}"> {{ update.title }}</a></h4>
       			
       			<p> {{ update.content }}</p>
       		</div>
