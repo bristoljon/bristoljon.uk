@@ -36,7 +36,7 @@
 		<div class="container" ng-controller="mainController">
 
 			<h2>Time is Money</h2>
-			<p>Money is Time, so I keep 7'o'clock in the bank and gain interest in the hour of God. I'm saving to by my freedom.</p>
+			<p>First enter your details below. Then add custom time or money units in 'Units'. Use 'Convert' tab to convert time into money and vice versa. 'Counter' is under construction.</p>
 			<ul class="nav nav-tabs">
 				<li class="active"><a data-toggle="tab" href="#you">Details</a></li>
 				<li><a data-toggle="tab" href="#units">Units</a></li>
@@ -52,7 +52,7 @@
 					<h3>You</h3>
 					<div id="age" class="form-group">
 						<label for="age">How old are you?</label>
-						<input ng-model="age" name="age" type="text" class="form-control">
+						<input ng-model="age" type="text" class="form-control">
 					</div>
 
 
@@ -60,34 +60,12 @@
 
 					<div class="form-group">
 
-						<label for="hours">How many hours do you work?</label>
-						<div class="input-group">
-						  <input ng-change="calculateHours()" ng-model="hours" id="hours" name="hours" type="text" class="form-control">
-						  <span class="input-group-btn">
-						    <select ng-model="hoursPer" ng-change="calculateHours()" class="btn">
-						      <option>/day</option>
-						      <option selected>/week</option>
-						      <option>/month</option>
-						    </select>
-						  </span>
-						</div>
-
-						<label for="pay">How much do you get paid?</label>
-						<div class="input-group">
-						  <input ng-change="calculatePay()" ng-model="pay" id="pay" name="pay" type="text" class="form-control">
-						  <span class="input-group-btn">
-						    <select ng-model="payPer" ng-change="calculatePay()" class="btn">
-						      <option>/hour</option>
-						      <option>/day</option>
-						      <option>/week</option>
-						      <option>/month</option>
-						      <option selected>/year</option>
-						    </select>
-						  </span>
-						</div>
-
+						<label>How many hours do you work a week?</label>
+						<input ng-change="calculateHours()" ng-model="hours" type="text" class="form-control">
+						<label>How much do you get paid a year?</label>
+						<input ng-change="calculatePay()" ng-model="pay" type="text" class="form-control">
 					</div>
-
+<!--
 
 					<h3>Save</h3>
 					<div class="form-group">
@@ -113,6 +91,7 @@
 					    <label for="saveForCost">How much does it/he/she/they cost?</label>
 					    <input ng-model="saveForCost" id="saveForCost" name="saveForCost" type="text" class="form-control">      
 					</div>
+//-->
 				</div>
 
 
@@ -121,8 +100,8 @@
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th>Unit</th>
-								<th>Cost</th>
+								<th>Unit <span ng-click="sortMoneyBy('Title')" class="glyphicon glyphicon-sort"></span></th>
+								<th>Cost <span ng-click="sortMoneyBy('Pounds')" class="glyphicon glyphicon-sort"></span></th>
 								<th></th>
 							</tr>
 						</thead>
@@ -130,17 +109,14 @@
 							<tr ng-repeat="unit in moneyUnits">
 								<td class="col-sm-8 col-md-8"> {{ unit.title }} </td>
 								<td class="col-sm-3 col-md-3"> {{ unit.pounds }} </td>
-								<td class="col-sm-1 col-md-1"><a ng-click="removeUnit()"><span class="glyphicon glyphicon-minus"></i></a></td>
+								<td class="col-sm-1 col-md-1"><a ng-click="removeUnit(unit.title)"><span class="glyphicon glyphicon-minus"></i></a></td>
 							</tr>
 							<tr>
 								<td><input class="form-control" type="text" ng-model="customMoneyTitle"></td>
-								<td><div class="input-group">
-      <input ng-model="customMoneyPounds" type="text" class="form-control" placeholder="£ GBP">
-      <span class="input-group-btn">
-        <button ng-click="customMoneyAdd()" class="btn btn-default" type="button">Go!</button>
-      </span>
-    </div><!-- /input-group -->
+								<td>
+      								<input ng-model="customMoneyPounds" type="text" class="form-control" placeholder="£ GBP">
 								</td>
+								<td class="col-sm-1 col-md-1"><button ng-click="customMoneyAdd()" class="btn btn-default" type="button">Add</button></td>
 							</tr>
 						</tbody>
 					</table>
@@ -149,23 +125,23 @@
 					<table class="table table-striped">
 					<thead>
 					  <tr>
-					    <th>Unit</th>
-					    <th>Hours</th>
+					    <th>Unit <span ng-click="sortTimeBy('Title')" class="glyphicon glyphicon-sort"></span></th>
+					    <th>Hours <span ng-click="sortTimeBy('Hours')" class="glyphicon glyphicon-sort"></span></th>
 					  </tr>
 					</thead>
 					<tbody>
-					  <tr>
-					    <td>Tommy Tank (average male)</td>
-					    <td>0.4</td>
-					  </tr>
-					  <tr>
-					    <td>Bristol - London by bus</td>
-					    <td>3</td>
-					  </tr>
-					  <tr>
-					    <td>Crossing the Atlantic by pedalo</td>
-					    <td>2664</td>
-					  </tr>
+					  <tr ng-repeat="unit in timeUnits">
+								<td class="col-sm-8 col-md-8"> {{ unit.title }} </td>
+								<td class="col-sm-3 col-md-3"> {{ unit.hours }} </td>
+								<td class="col-sm-1 col-md-1"><a ng-click="removeUnit(unit.title)"><span class="glyphicon glyphicon-minus"></i></a></td>
+							</tr>
+							<tr>
+								<td><input class="form-control" type="text" ng-model="customTimeTitle"></td>
+								<td>
+		      						<input ng-model="customTimeHours" type="text" class="form-control" placeholder="Hours">
+								</td>
+								<td class="col-sm-1 col-md-1"><button ng-click="customMoneyAdd()" class="btn btn-default" type="button">Add</button></td>
+							</tr>
 					</tbody>
 					</table>
 				  
@@ -178,7 +154,7 @@
 				    <div class="col-xs-5">
 				      <div class="form-group">
 				        <label for="inVal">Input</label>
-				        <input ng-model="inVal" id="inVal" name="inVal" type="text" class="form-control">
+				        <input ng-model="inVal" ng-change="convertUnits()" id="inVal" name="inVal" type="text" class="form-control">
 				        <select ng-model="inUnits" ng-change="convertUnits()" class="form-control" id="inUnits">
 				          <optgroup label="Time">
 				          		<option ng-repeat="unit in timeUnits">{{ unit.title }}</option>
@@ -223,7 +199,32 @@
 				</div>
 
 				<div id="count" class="tab-pane fade">
-					
+					<div class="panel panel-default">
+						
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-body">
+						<div class="form-group">
+					        <label>Name</label>
+					        <input type="text" class="form-control" ng-model="countName">
+
+					        <label>Start Time</label>
+					        <input id="countStart" type="datetime-local" value="2015-09-02T12:41:34.24" class="form-control" ng-model="countStart">
+
+					        <label>Units</label>
+					        <select ng-model="countUnits" class="form-control">
+					        	<optgroup label="Time">
+					          		<option ng-repeat="unit in timeUnits">{{ unit.title }}</option>
+					          	</optgroup>
+					          	<optgroup label="Money">
+					          		<option ng-repeat="unit in moneyUnits">{{ unit.title }}</option>
+					          	</optgroup>
+					        </select>
+					        <br/>
+					        <input type="submit" ng-click="addCounter()" class="btn btn-success" value="Start">
+				      	</div>
+				      	</div>
+					</div>
 				</div>
 
 				<div id="stats" class="tab-pane fade">
