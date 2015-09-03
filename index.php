@@ -27,69 +27,9 @@ include($root."/login.php");
    
   </head>
 
-  <body data-spy="scroll" data-target=".navbar" data-offset="50">
+  <body>
     
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
-
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/">Home</a>
-    </div>
-
-    <div id="navbar" class="navbar-collapse collapse">
-      
-      <ul class="nav navbar-nav navbar-right">
-
-        <?php echo $login; ?>
-    
-      </ul> 
-
-      <ul class="nav navbar-nav">
-
-      	
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Projects <span class="caret"></span></a>
-          <ul class="dropdown-menu inverse-dropdown">
-            <li><a href="/project/this">This Website</a></li>
-            <li><a href="/project/urbansports">Urban Sports <i class="fa fa-lock"></i></a></li>
-            <li><a href="/project/imedic">iMedic</a></li>
-            <li><a href="/project/onetimepad">One-Time Pad Encryption <span class="glyphicon glyphicon-phone"></span></a></li>
-            <li><a href="/project/3d">3D Viewer</a></li>
-            <li><a href="/suncalc">'Suncalc'</a></li> 
-            <li><a href="/shader">Box Shadows</a></li>
-            <li><a href="/project/dozenal">Dozenal Calculator</a></li>
-            <li><a href="/spoof">E-mail Spoofer</a></li>
-            <li><a href="/drinkscalc">Alcohol Unit Calculator</a></li>
-            <li><a href="/stylechanger">PHP Styles Changer</a></li>
-            <li><a href="/taptimer">Touch Timer</a></li>
-          </ul>
-        </li>
-
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog <span class="caret"></span></a>
-          <ul class="dropdown-menu inverse-dropdown">
-            <li><a href="/blog/update-3">Update 3 - 2 Months Later</a></li>
-            <li><a href="/blog/update-2">Update 2 - Week 4</a></li>
-            <li><a href="/blog/update-1">Update 1</a></li>    
-          </ul>
-        </li>
-
-        <li><a href="#recent">Recent</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-
-        
-      </ul>
-
-    </div>    
-  </div>
-</nav>
+<?php include($root."/header.html"); ?>
 
 <?php include($root."/signupmodal.html"); ?>
 
@@ -172,9 +112,6 @@ $(window).load(function() {
     $(".row").css("min-height",$(window).height());
   }
 
-  // Call scrollspy
-  $("body").scrollspy({target: "#navbar"});
-
   <?php echo $openSignUpModal; ?>
 
 });
@@ -187,29 +124,6 @@ myApp.controller('mainController', ['$scope','$log','$http','$timeout',function(
     	return timeSince(Date.parseExact(dater,"yyyy-MM-dd HH:mm:ss"));
     };
     
-    
-    /* 
-    // Working pure js xhr request
-    var updatesrequest = new XMLHttpRequest();
-    var url = "/updates.php";
-
-	updatesrequest.open("POST", url, true);
-	updatesrequest.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-	
-    updatesrequest.onreadystatechange = function () {
-    	$scope.$apply(function() {
-
-	    	if (updatesrequest.readyState == 4 && updatesrequest.status ==200) {
-	    		$scope.updates = angular.fromJson(updatesrequest.responseText);
-	    	}
-	    })
-    }
-
-	updatesrequest.send("get=recent");
-	
-    
-    
-*/	// Change default POST header so that PHP receives parameters correctly
 	$http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
 
 	$http.post('/updates.php',"get=recent").
@@ -220,12 +134,7 @@ myApp.controller('mainController', ['$scope','$log','$http','$timeout',function(
   	}, function(response) {
 	    $log.log("Failed");
   	});
-
-
-
-	
-	  
-    
+   
 }]);
 
 </script>
