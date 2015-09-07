@@ -1,4 +1,4 @@
-Date.prototype.toDateInputValue = (function() {
+﻿Date.prototype.toDateInputValue = (function() {
     var local = new Date(this);
     local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
     console.log(local.toJSON().slice(0,16));
@@ -57,7 +57,7 @@ myApp.controller('mainController', ['$scope','$filter','$log','$timeout', functi
     }
 
     $scope.customTimeAdd = function() {
-    	$scope.timeUnits.push(new timeUnit($scope.customMoneyTitle,$scope.customMoneyPounds));
+    	$scope.timeUnits.push(new timeUnit($scope.customTimeTitle,$scope.customTimeHours));
     }
 
     $scope.removeMoneyUnit = function(unit) {
@@ -168,7 +168,11 @@ myApp.controller('mainController', ['$scope','$filter','$log','$timeout', functi
   				outVal = ($scope.inVal * inPounds) / outPounds;
   			}
   			if (outType === "Time") {
-  				outVal = (($scope.inVal * inPounds) / $scope.truePayPerHour)*outHours;
+console.log("OutHours: "+outHours);
+console.log(($scope.inVal * inPounds) / $scope.truePayPerHour);
+  				outVal = (($scope.inVal * inPounds) / $scope.truePayPerHour)/outHours;
+console.log("outVal: "+outVal);
+
   			}
   		}
   		$scope.outVal = numberFormatter(outVal);

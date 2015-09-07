@@ -1,0 +1,143 @@
+<?php
+  include(link.php);
+
+
+
+
+
+
+
+?>
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Race Driver Database</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <style type="text/css">
+
+      .jumbotron {
+        color:#111111;
+        background: #000 url("McLaren.jpg") center center;
+        width: 100%;
+        background-size: cover;
+        background-position: top;
+        margin:0;
+        text-align: center
+      }
+
+      .jumbotron h1 {
+        margin-top:100px;
+      }
+
+
+      .row1 {
+        color:black;
+        background-color:lightgrey;
+        width: 100%;
+        height: 100%;
+      }
+
+
+
+    </style>
+
+
+  </head>
+
+<body>
+  
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">RDDB</a>
+        </div>
+      
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">About</a></li>
+          </ul>
+
+          <form method="post" class="navbar-form navbar-right" role="login">
+            <div class="form-group">
+              <input name="loginEmail" type="email" class="form-control" placeholder="e-mail">
+              <input name="loginPass" type="password" class="form-control" placeholder="Password">
+            </div>
+            <button type="submit" name="submit" value="login" class="btn btn-default">Log in</button>
+          </form>
+
+      </div>
+    </nav>
+  </div>
+
+  <div class="jumbotron row">
+    <div class="container">
+      <h1>Race Driver Database</h1>
+      <p>Free, open-access database of event results and individual driver rating system</p>
+      
+      <div class="col-md-6 col-md-offset-3">
+        <form method="post">
+          <div class="form-group">
+            <input name="email" type="email" class="form-control" placeholder="Username"><br/>
+            <input name="pass" type="password" class="form-control" placeholder="Password">
+          </div>
+          <button type="submit" name="submit" value="signup" class="btn btn-success btn-lg">Sign Up</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+<div class="row1">
+
+    <div class="row row1">
+
+      <div class="container-fluid">
+      <div class="col-md-4">
+        <h4>Free</h4>
+        <p>Completely free to use for all drivers, leagues and companies. And always will be.</p>
+      </div>
+
+      <div class="col-md-4">
+        <h4>Auto updated</h4>
+        <p>Integration with major karting companies means your race results are available as soon as the session is over.</p>
+      </div>
+
+      <div class="col-md-4">
+        <h4>Driver ratings</h4>
+        <p>Custom driver ratings system that calculates individual ratings based on performance against competitors. </p>
+      </div>
+
+    </div>
+  </div>
+  </div>
+ 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  
+    <script src="js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+
+     $(".jumbotron").css("height",$(window).height());
+
+
+
+    </script>
+</body>

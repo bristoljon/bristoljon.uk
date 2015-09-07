@@ -1,10 +1,10 @@
-# Switch rewrite engine off in case this was installed under HostPay.
-RewriteEngine Off
+RewriteEngine on
+RewriteRule ^blog/([^/.]+)/?$ blog/index.php?title=$1 [L]
 
-SetEnv DEFAULT_PHP_VERSION 53
+RewriteRule ^project/([^/.]+)/?$ project/index.php?project=$1 [L]
 
-DirectoryIndex index.cgi index.php
+RewriteRule ^logout index.php?logout=1
 
-# BEGIN WordPress
+RewriteRule ^private/([^/.]+)/?$ private.php?query=$1 [L]
 
-# END WordPress
+RewriteRule ^notfound notfound.php

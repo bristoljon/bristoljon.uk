@@ -1,13 +1,14 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en-us" ng-app="myApp">
 
     <head>
         <title>Time is Money</title>
         <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta charset="UTF-8">
-
-        <!-- load bootstrap and fontawesome via CDN -->
-        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+	
+        <!-- load bootstrap via CDN -->
+        <link rel="stylesheet" href="/css/bootstrap.min.css" />
         <style>
 
 
@@ -107,9 +108,9 @@
 						</thead>
 						<tbody>
 							<tr ng-repeat="unit in moneyUnits">
-								<td class="col-sm-8 col-md-8"> {{ unit.title }} </td>
-								<td class="col-sm-3 col-md-3"> {{ unit.pounds }} </td>
-								<td class="col-sm-1 col-md-1"><a ng-click="removeMoneyUnit(unit.title)"><span class="glyphicon glyphicon-minus"></i></a></td>
+								<td class="col-xs-8 col-sm-8 col-md-8"> {{ unit.title }} </td>
+								<td class="col-xs-3 col-sm-3 col-md-3"> {{ unit.pounds }} </td>
+								<td class="col-xs-1 col-sm-1 col-md-1"><a ng-click="removeMoneyUnit(unit.title)"><span class="glyphicon glyphicon-minus"></i></a></td>
 							</tr>
 							<tr>
 								<td><input class="form-control" type="text" ng-model="customMoneyTitle"></td>
@@ -131,9 +132,9 @@
 					</thead>
 					<tbody>
 					  <tr ng-repeat="unit in timeUnits">
-								<td class="col-sm-8 col-md-8"> {{ unit.title }} </td>
-								<td class="col-sm-3 col-md-3"> {{ unit.hours }} </td>
-								<td class="col-sm-1 col-md-1"><a ng-click="removeTimeUnit(unit.title)"><span class="glyphicon glyphicon-minus"></i></a></td>
+								<td class="col-xs-8 col-sm-8 col-md-8"> {{ unit.title }} </td>
+								<td class="col-xs-3 col-sm-3 col-md-3"> {{ unit.hours }} </td>
+								<td class="col-xs-1 col-sm-1 col-md-1"><a ng-click="removeTimeUnit(unit.title)"><span class="glyphicon glyphicon-minus"></i></a></td>
 							</tr>
 							<tr>
 								<td><input class="form-control" type="text" ng-model="customTimeTitle"></td>

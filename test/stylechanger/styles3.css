@@ -1,0 +1,33 @@
+body {
+      background-color: yellow;
+      font-family: 'Yanone Kaffeesatz', sans-serif;
+      font-size: 20px;
+    }
+
+    .navbar {
+      background-color: orange;
+    }
+
+    .navbar-default li a:hover{
+      background: yellow;
+    }
+
+    .navbar-default .navbar-nav .active {
+      background: yellow;
+    }
+
+    .navbar-default .active {
+      background-color: yellow;
+    }
+
+    .jumbotron {
+      background-color: orange;
+    }
+
+    .dropdown-menu {
+      background-color: orange;
+      font-size: 20px;
+    }
+#homeicon {
+  display:none;
+}
