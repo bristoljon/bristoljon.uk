@@ -80,20 +80,20 @@ textarea {
   <form>
 
     <div class="form-group" id="cle">
-      <label for="cleartext" style="font-weight: bold; text-align:center">Clear text:</label>
+      <label for="cleartext" style="font-weight: bold; text-align:center">Plaintext:</label>
       <textarea class="form-control" name="cleartext" id="cleartext"></textarea>
     </div>
 
     
     <div class="form-group" id="cip">
-      <label for="cipher" style="font-weight: bold; text-align:center">Cipher:</label>
+      <label for="cipher" style="font-weight: bold; text-align:center">Key:</label>
       <textarea class="form-control" name="cipher" id="cipher"></textarea>
     </div>
 
 
     
      <div class="form-group" id="enc">
-      <label for="encrypted" style="font-weight: bold; text-align:center">Encrypted:</label>
+      <label for="encrypted" style="font-weight: bold; text-align:center">Ciphertext:</label>
       <textarea class="form-control" name="encrypted" id="encrypted"></textarea>
     </div>
 
@@ -110,7 +110,9 @@ textarea {
     <div id="instructions">
       <h4>Instructions<a class="pull-right icon" href=""><span class=" glyphicon glyphicon-plus"></span></a></h4>
       <div class="content">
-        <p>Enter your message in the first box, enter cipher text in the second box, your encrypted message will appear in the third. You can copy and paste sections of books, articles, news sites, reddit, anything with text in it for the cipher. It should be as long as the message but it will loop round as needed if it's not.To decrypt just put the encrypted text in the last box and your message will appear in the first box. You can even change the cipher to see the effect on the encryption.</p>
+        <p>Enter your message in the first (plaintext) box, enter key text in the second box, your encrypted message will appear in the third. You can copy and paste sections of books, articles, news sites, reddit, anything with text in it for the key. It should be as long as the message but it will loop round as needed if it's not. Any changes you make to the plaintext or key boxes should cause the output to update automagically</p>
+<p>You can press the 'Encrypt' heading at the top to change mode to decrypt. This reverses the order of the boxes and means that any changes to the <i>Ciphertext</i> or <i>Key</i> boxes will change the output in the <i>Plaintext</i> box. This is useful if you want to nest encryption e.g. If I drink, I die. If I eat, I'm fine. What am I?</p>
+<p>PL\PíO_PUêoY\ÚVg_ÓaUWæ]YPJc@ïRc\VF`õ~£À¼·×Ê¾ÈÑÒ½ÞÐÐ¼ÑÕÖ´ÓÁåÐÊ¦§óîÿ)-#,2%CVapødOjae\óVSreæXi3ó9[a`ôZ``icXî`aeJï^y!ç;dømYpñ^Xgî[p _^j%WPW,øKR\eù`fî[p?æ,2B ôÿ¯¢£ÉÍÇÝÍÇÜÆÏáÔÚÔÚÚàÔÕ×ÌÙ¨¢£¦</p>
       </div>
     </div>
 
@@ -118,9 +120,7 @@ textarea {
       <h4>Bugs / Issues<a class="pull-right icon" href=""><span class=" glyphicon glyphicon-plus"></span></a></h4>
       <div class="content">
         <ul>
-          <li>The code only converts the 'printable' ascii range from 32-126 so certain characters outside that range like £ and RETURN will be encrypted (and decrypted) to something inside the range.</li>
-          <li>If you use normal english as your cipher it might be possible for a cracker to guess characters based on occurrance rates in the language (e.g) SPACE key is pretty common. Though technically you would still have deniability (since it's possible for an encrypted message to decrypt to anything given the right cipher), the chances of it decrypting to a human readable message using a human readable cipher are ridiculously small! Will add options to remove spaces and 'randomize' the cipher to make this more difficult but you should use a random source for real security.</li>
-          <li>Changing the cipher only changes the encrypted text. I need to add the option so that you can see the effect of changing the cipher on the clear text.</li>
+          <li>If you use normal language in your key it might be possible for a cracker to guess characters based on occurrance rates in the language (e.g) SPACE key is pretty common. Though technically you would still have deniability (since it's possible for an encrypted message to decrypt to anything given the right cipher), but the chances of it decrypting to a human readable message using a human readable cipher are probably pretty tiny! Will add options to remove spaces and 'randomize' the key to make this more difficult but you should use a random source for real security.</li>
         </ul>
       </div>
 </div>
@@ -142,15 +142,15 @@ $("textarea").css("min-height",$(window).height()/5);
 
 
 // Toggle info divs
-$("h4 a").click(function(event) {
+$("h4").click(function(event) {
   event.preventDefault();
   if ($(this).find("span").hasClass("glyphicon-plus")) {
-    $(this).parent().parent().find(".content").show();
+    $(this).parent().find(".content").show();
     $(this).find("span").removeClass("glyphicon-plus");
     $(this).find("span").addClass("glyphicon-minus");
   }
   else {
-    $(this).parent().parent().find(".content").hide();
+    $(this).parent().find(".content").hide();
     $(this).find("span").removeClass("glyphicon-minus");
     $(this).find("span").addClass("glyphicon-plus");
   }
