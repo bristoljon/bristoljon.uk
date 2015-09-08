@@ -54,13 +54,13 @@ body {
 
 .recent {
   padding: 50px 0 20px 0;
-    background: radial-gradient(circle, #77ffe3 40%, #6bd7ff);
+    background: radial-gradient(circle, #FFFF00 40%, #FFA500);
     background-size: cover;
     margin:0;
 }
 
 .about {
-  background: radial-gradient(circle, #FFFF00 40%, #FFA500);
+  background: radial-gradient(circle, #77ffe3 40%, #6bd7ff);
   margin:0;
   background-size: cover;
   font-size:1.2em;
@@ -69,6 +69,10 @@ body {
 
 .about .panel-primary {
   opacity:0.6;
+}
+
+#contact {
+  background: radial-gradient(circle, #FFFF00 40%, #FFA500) !important;
 }
 
 
