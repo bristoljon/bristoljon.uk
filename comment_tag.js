@@ -99,7 +99,7 @@ function getComments(){
             */
           }
 
-          $("#comments").before("<div class='panel panel-primary comment'><div class='panel-heading'><strong>"+comment[i]['name']+"</strong> <span class='glyphicon glyphicon-user'></span> - "+timeSince(date)+spanner+"</div><div class='panel-body'><p>"+comment[i]['content']+"</p></div></div>");
+          $("#comments").before("<div class='panel panel-info comment'><div class='panel-heading'><strong>"+comment[i]['name']+"</strong> <span class='glyphicon glyphicon-user'></span> - "+timeSince(date)+spanner+"</div><div class='panel-body'><p>"+comment[i]['content']+"</p></div></div>");
         }
 
         // Add event listener for delete buttons

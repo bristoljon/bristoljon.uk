@@ -168,7 +168,7 @@ function time_elapsed_string($datetime, $full = false) {
     <div class="container">
 
       <div class="col-md-2">
-        <div class="panel panel-primary" id="tags">
+        <div class="panel panel-info" id="tags">
           <div class="panel-heading">Tags</div>
           <div class="panel-body" id="tagcloud"></div>
         </div>
@@ -182,7 +182,7 @@ function time_elapsed_string($datetime, $full = false) {
           <a role="button" id="pain" class="btn btn-default active" href="#">Bring the pain!</a>
         </div>
 
-        <div class="panel panel-primary">
+        <div class="panel panel-info">
           <div class="panel-body"> 
             <?php echo $results['content']; ?>
           </div> 
