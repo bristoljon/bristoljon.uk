@@ -4,7 +4,7 @@ session_start();
 
 $root = $_SERVER['DOCUMENT_ROOT'];
 
-include($root."/login.php");
+include($root."/php/login.php");
 
 
 ?>
@@ -19,7 +19,7 @@ include($root."/login.php");
     
     <title>Log in first</title>
 
-    <?php include($root."/head.html"); ?>
+    <?php include($root."/html/head.html"); ?>
 
 
 <style type="text/css">
@@ -61,46 +61,13 @@ include($root."/login.php");
   font-weight: bold;
 }
 
-
-
-
-
-/* E-mail contact form styles */
-.contact {
-  background: radial-gradient(circle, #6bd7ff 50%, #77ffe3);
-  margin:0;
-  background-size: cover;
-  font-size:1.2em;
-  padding:50px 0;
-  text-align: center;
-}
-
-.input-group {
-  margin-bottom:20px;
-  min-width: 100%;
-}
-
-.form-control {
-  width:100%;
-}
-
-textarea {
-  min-height:400px;
-}
-
-.input-group-addon {
-    min-width:70px;
-    text-align:left;
-}
-
-
     </style>
     
 </head>
 
 <body>
     
-<?php include($root."/header.html"); ?>
+<?php include($root."/html/header.html"); ?>
 
 <div id="home" class="row jumbo">
   <div class="container">
@@ -119,45 +86,8 @@ textarea {
 
 
 
-    
-<div id="contact" class="row contact">
-    <a name="contact"></a>
-      <div class="container">
-        <div class="col-md-6 col-md-offset-3">
-
-          <h1>Need an access code?</h1>
-          <p>Enter your details below and I'll get back to you</p>
-
-        <form method="post">
-          <div class="form-group">        
-            <div class="input-group">
-              <span class="input-group-addon">Name </span>
-              <input id="name" type="text" class="form-control"/>
-            </div>
-
-            <div class="input-group">
-              <span class="input-group-addon">Email </span>
-              <input  id="email" type="email" class="form-control"/>
-            </div>
-
-            <div class="input-group">
-              <span class="input-group-addon">Subject </span>
-              <input id="subject" type="text" class="form-control"/>
-            </div>
-
-            <div class="input-group">
-              <textarea id="textarea" class="form-control"></textarea>
-            </div>
-
-            <input id="send" value="Send" type="submit" class="btn-success btn-lg"></button>
-          </div>
-        </form>
-
-        <div id="result"></div>  
-      </div>
-    </div>
-</div>
-
+<?php include($root."/html/contact.html"); ?>
+<?php include($root."/html/foot.html"); ?>
 
 
 

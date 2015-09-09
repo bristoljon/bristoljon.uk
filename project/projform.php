@@ -4,7 +4,7 @@ session_start();
 
 $root = $_SERVER['DOCUMENT_ROOT'];
 
-include($root."/login.php");
+include($root."/php/login.php");
 
 if (!$_SESSION['id']) {
   header('Location: /private.php');
@@ -239,7 +239,7 @@ if ($_POST['title_url']) {
     
     <title>New Project</title>
 
-    <?php include($root."/head.html"); ?>
+    <?php include($root."/html/head.html"); ?>
 
 
 <style type="text/css">
@@ -266,7 +266,7 @@ body {
 
 <body>
     
-<?php include($root."/header.html"); ?>
+<?php include($root."/html/header.html"); ?>
 
 <div class="row">
 

@@ -4,7 +4,7 @@ session_start();
 
 $root = $_SERVER['DOCUMENT_ROOT'];
 
-include($root."/login.php");
+include($root."/php/login.php");
 
 if ($_GET['title']) {
   $type="blog";
@@ -71,7 +71,7 @@ function time_elapsed_string($datetime, $full = false) {
     
     <title><?php echo $results['title']; ?></title>
 
-    <?php include($root."/head.html"); ?>
+    <?php include($root."/html/head.html"); ?>
 
 <style type="text/css">
 
@@ -136,8 +136,8 @@ function time_elapsed_string($datetime, $full = false) {
 
 <body>
     
-<?php include($root."/header.html"); ?>
-<?php include($root."/signupmodal.html"); ?>
+<?php include($root."/html/header.html"); ?>
+<?php include($root."/html/signupmodal.html"); ?>
 
 <div id="home" class="row jumbo">
   <div class="container">
@@ -196,9 +196,9 @@ function time_elapsed_string($datetime, $full = false) {
     </div>
 </div>
 
-<?php include($root."/contact.html"); ?>  
+<?php include($root."/html/contact.html"); ?>  
 
-<?php include($root."/foot.html"); ?>
+<?php include($root."/html/foot.html"); ?>
 
 <script type="text/javascript">
 

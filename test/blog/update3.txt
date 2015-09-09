@@ -1,6 +1,0 @@
-Tues: Pounds per hour / this equals that
-Wed: Dozenal calc feedback, Updates system - privacy, PHP strip_tags for removing HTML
-Job hunting
-Wordpress - Git, Grunt,
-Angular - Switched updates feed, recoded this equals that / time is money
-

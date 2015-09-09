@@ -4,7 +4,7 @@ session_start();
 
 $root = $_SERVER['DOCUMENT_ROOT'];
 
-include($root."/login.php");
+include($root."/php/login.php");
 
 if ($_SESSION['id']!="jon") {
   header('Location: /private.php');
@@ -168,7 +168,7 @@ unset($_POST['submit']);
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
 
-    <link href="/header.css" rel="stylesheet" type="text/css">
+    <link href="/html/header.css" rel="stylesheet" type="text/css">
 
 
 <style type="text/css">
@@ -195,7 +195,7 @@ body {
 
 <body>
     
-<?php include($root."/header.html"); ?>
+<?php include($root."/html/header.html"); ?>
 
 <div class="row">
 
@@ -267,7 +267,7 @@ body {
 
     function getTags(){
       $.ajax({
-        url:"/tagger.php",
+        url:"/php/tagger.php",
         type:"POST",
         data: { reference:<?php if ($results['id']) echo $results['id']; else echo 0; ?>,
                 type:"blog"},

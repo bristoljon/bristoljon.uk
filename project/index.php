@@ -4,7 +4,7 @@ session_start();
 
 $root = $_SERVER['DOCUMENT_ROOT'];
 
-include($root."/login.php");
+include($root."/php/login.php");
 
 if ($_GET['project']) {
   $query= "SELECT * FROM `project` WHERE title_url ='".mysqli_real_escape_string($link, $_GET['project'])."'";     
@@ -79,7 +79,7 @@ function time_elapsed_string($datetime, $full = false) {
     
     <title><?php echo $results['title']; ?></title>
 
-    <?php include($root."/head.html"); ?>
+    <?php include($root."/html/head.html"); ?>
 
 
 <style type="text/css">
@@ -183,8 +183,8 @@ img {
 
 <body>
     
-<?php include($root."/header.html"); ?>
-<?php include($root."/signupmodal.html"); ?>
+<?php include($root."/html/header.html"); ?>
+<?php include($root."/html/signupmodal.html"); ?>
 
 <div id="home" class="row jumbo">
   <div class="container">
@@ -330,7 +330,7 @@ img {
     </div>
 
     <div class="col-md-3">
-      <?php include($root."/comment.html"); ?>
+      <?php include($root."/html/comment.html"); ?>
     </div>
   </div>
 </div>
@@ -345,11 +345,12 @@ img {
 </div><!-- /.modal -->
 
 
-<?php include($root."/contact.html"); ?>
+<?php include($root."/html/contact.html"); ?>
 
-<?php include($root."/foot.html"); ?>
+<?php include($root."/html/foot.html"); ?>
 
 <script type="text/javascript">
+
 var backgroundPos;
 
 // Get MySQL / PHP vars

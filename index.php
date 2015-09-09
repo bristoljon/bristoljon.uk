@@ -4,7 +4,7 @@ session_start();
 
 $root = $_SERVER['DOCUMENT_ROOT'];
 
-include($root."/login.php");
+include($root."/php/login.php");
 
 
 
@@ -21,7 +21,7 @@ include($root."/login.php");
     
     <title>bristoljon.uk</title>
 
-    <?php include($root."/head.html"); ?>
+    <?php include($root."/html/head.html"); ?>
 
     <link href="/styles.css" rel="stylesheet" type="text/css">
    
@@ -29,9 +29,9 @@ include($root."/login.php");
 
   <body>
     
-<?php include($root."/header.html"); ?>
+<?php include($root."/html/header.html"); ?>
 
-<?php include($root."/signupmodal.html"); ?>
+<?php include($root."/html/signupmodal.html"); ?>
 
     <div id="home" class="row jumbo">
       <div class="container">
@@ -94,9 +94,9 @@ include($root."/login.php");
       </div>
     </div>
 
-<?php include($root."/contact.html"); ?>
+<?php include($root."/html/contact.html"); ?>
 
-<?php include($root."/foot.html"); ?>
+<?php include($root."/html/foot.html"); ?>
 
 <script src="http://code.angularjs.org/1.3.0-rc.1/angular.min.js"></script>
 
@@ -126,7 +126,7 @@ myApp.controller('mainController', ['$scope','$log','$http','$timeout',function(
     
 	$http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
 
-	$http.post('/updates.php',"get=recent").
+	$http.post('/php/updates.php',"get=recent").
   	then(function(response) {
   		$scope.updates = angular.fromJson(response.data);
     	$log.log($scope.updates)
