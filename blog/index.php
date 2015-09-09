@@ -191,7 +191,7 @@ function time_elapsed_string($datetime, $full = false) {
       </div>
 
       <div class="col-md-3">
-        <?php include($root."/comment.html"); ?>
+        <?php include($root."/html/comment.html"); ?>
       </div>
     </div>
 </div>
