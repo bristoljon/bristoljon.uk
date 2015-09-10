@@ -1,4 +1,9 @@
 <?php
+
+session_start();
+
+$root = $_SERVER['DOCUMENT_ROOT'];
+
 if ($_POST['send']) {
 
   if ($_POST["name"] AND $_POST["email"] AND $_POST["subject"] AND $_POST["message"]) {
@@ -36,7 +41,7 @@ if ($_POST['send']) {
 
         $result = '<div class="alert alert-success">Great success. e-mail sent!</div>';
 
-        $file = "/log/log.txt";
+        $file = $root."/log/log.txt";
         
         file_put_contents($file, $log, FILE_APPEND);
       }

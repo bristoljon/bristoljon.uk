@@ -106,12 +106,13 @@ include($root."/php/login.php");
 
 $(window).load(function() {
 
-  $(".jumbo").css("min-height",$(window).height());
-  //set row heights to window height
-  if ($(window).height()<400) {
-    $(".row").css("min-height",$(window).height());
-  }
+	$(".jumbo").css("min-height",$(window).height());
 
+  	//set row heights to window height
+	  if ($(window).height()<400) {
+	    $(".row").css("min-height",$(window).height());
+	  }
+	
   <?php echo $openSignUpModal; ?>
 
 });
@@ -119,7 +120,7 @@ $(window).load(function() {
 var myApp = angular.module('myApp', []);
 
 myApp.controller('mainController', ['$scope','$log','$http','$timeout',function($scope,$log,$http,$timeout) {
-
+	
     $scope.convertDate = function (dater) {
     	return timeSince(Date.parseExact(dater,"yyyy-MM-dd HH:mm:ss"));
     };
@@ -129,8 +130,6 @@ myApp.controller('mainController', ['$scope','$log','$http','$timeout',function(
 	$http.post('/php/updates.php',"get=recent").
   	then(function(response) {
   		$scope.updates = angular.fromJson(response.data);
-    	$log.log($scope.updates)
-  
   	}, function(response) {
 	    $log.log("Failed");
   	});

@@ -132,14 +132,6 @@
 <p>The original plan was to incorporate the latest JRCALC clinical guidelines into a easily navigable UI along with a few other useful features. The only other mobile JRCALC app was a really horrible cut and paste, html based interface but it was selling for $15 and getting good reviews...<span class="moreinfo"><a href="/imedic"> Read More</a></span></p>
 	 			</li>
 	 			<li class="stylebox">
-	 				<h4>Urban Sports</h4>
-	 				<p>Here is an idea I&#8217;ve wanted to get going for a while now..</p>
-<p>Urban Sports would be a mobile app that takes advantage of geo-location, augmented reality, social media and the human desire to have fun and meet new people to provide a platform for organising games with random people in their local area.</p>
-<p>The basic idea isn&#8217;t original at all and there are many apps out there that provide individual games that depend on location services like Google&#8217;s ??? However this would be a one stop shop for a whole variety of different games and a points system that works across all of them.</p>
-<p>Some games would be long term, ongoing challenges like Manhunt where the user has the mugshots of 3 players in their vicinity who they have to keep an eye out for. Other games like Chess and Pacman would be regular scheduled or one-off events.</p>
-<p>Players would gain points for joining and winning games. Acting as... <span class="moreinfo"><a href="/imedic"> Read More</a></span></p>
-	 			</li>
-	 			<li class="stylebox">
 	 				<h4>RDDB: Race Driver Data Base</h4>
 	 				<p>The idea for this came about when I was trying to organise regular racing events for a group of mates. The plan was to do mixture of karting, sim racing and track day events. I wanted to make it more interesting by calculating individual ratings for each driver based on their performance against everyone else. Similar to the Elo system for rating chess players.</p>
 <p>The Elo system is zero sum so the rating gains or losses in a match balance out. I applied the same system to a selection of results, see below (yes I did come out on top but this is not the only reason I was so keen to get this started).</p>
