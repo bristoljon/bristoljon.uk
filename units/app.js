@@ -47,7 +47,6 @@ myApp.controller('mainController', ['$scope','$filter','$log','$timeout', functi
     $scope.timeUnits.push(new timeUnit("Weeks",24*7));
     $scope.timeUnits.push(new timeUnit("Months",24*30));
     $scope.timeUnits.push(new timeUnit("Years",24*365));
-    $scope.timeUnits.push(new timeUnit("Wank (average male)",0.4));
     $scope.timeUnits.push(new timeUnit("London - Bristol Coach Trip",3));
     $scope.timeUnits.push(new timeUnit("Atlantic Crossing by Pedalo",2664));
 
