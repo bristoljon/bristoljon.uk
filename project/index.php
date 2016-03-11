@@ -252,7 +252,7 @@ img {
           <?php 
             
             if ($_SESSION['id']==="jon") {
-              echo "<a target='_blank' href='/updateform.php?reference_id=".$results['id']."&reference_type=project&title=".$results['title']."'><span class='glyphicon glyphicon-wrench'></span></a><a target='_blank' href='/project/projform.php?project=".$results['title_url']."'> <span class='glyphicon glyphicon-refresh'></span></a>";
+              echo "<a target='_blank' href='/project/updateform.php?reference_id=".$results['id']."&reference_type=project&title=".$results['title']."'><span class='glyphicon glyphicon-wrench'></span></a><a target='_blank' href='/project/projform.php?project=".$results['title_url']."'> <span class='glyphicon glyphicon-refresh'></span></a>";
             
             }
           ?>

@@ -5,6 +5,6 @@ RewriteRule ^project/([^/.]+)/?$ project/index.php?project=$1 [L]
 
 RewriteRule ^logout index.php?logout=1
 
-RewriteRule ^private/([^/.]+)/?$ private.php?query=$1 [L]
+RewriteRule ^private/([^/.]+)/?$ php/private.php?query=$1 [L]
 
-RewriteRule ^notfound notfound.php
+RewriteRule ^notfound php/notfound.php

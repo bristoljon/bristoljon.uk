@@ -23,7 +23,7 @@ include($root."/php/login.php");
 
     <?php include($root."/html/head.html"); ?>
 
-    <link href="/styles.css" rel="stylesheet" type="text/css">
+    <link href="/css/homepage.css" rel="stylesheet" type="text/css">
    
   </head>
 
