@@ -1,6 +1,8 @@
 <?php
 
-include ("/php/link.php");
+$root = $_SERVER['DOCUMENT_ROOT'];
+
+include($root."/php/link.php");
 
 if ($_POST['newUser']) {
 

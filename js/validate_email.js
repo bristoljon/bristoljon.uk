@@ -6,28 +6,28 @@ $(document).on('keyup','#newName input', function() {
 $(document).on('keyup','#newUser input', function() {
   validateUser();
   validateAll();
-})
+});
 
 $(document).on('keyup','#newPass input', function() {
   passMatch();
   validatePass();
   validateAll();
-})
+});
 
 $(document).on('keyup','#conPass input', function() {
   passMatch();
   validateAll();
-})
+});
 
 $(document).on('keyup','#test input', function() {
   validateTest();
   validateAll();
-})
+});
 
 $(document).on('keyup','#newEmail input', function() {
   validateEmail();
   validateAll();
-})
+});
 
 
 // Contact form sender
@@ -79,7 +79,7 @@ function updateGlyph(field,status,error) {
 // Function to display error message on cross click
 $(".glyphicon-remove").click(function() {
   $(this).parent().find("pull-right").toggle();
-})
+});
 
 
 // Sign up form validation

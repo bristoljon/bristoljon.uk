@@ -1,0 +1,26 @@
+{
+  "name": "bristoljon.uk",
+  "version": "0.0.0",
+  "description": "Web Dev and deploy tools",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bristoljon/bristoljon.uk.git"
+  },
+  "author": "bristoljon",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/bristoljon/bristoljon.uk/issues"
+  },
+  "devDependencies": {
+    "vinyl-ftp": "~0.4.5",
+    "gulp-util": "~3.0.7",
+    "gulp": "~3.9.1"
+  }
+}
