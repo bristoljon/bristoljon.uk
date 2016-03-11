@@ -1,6 +1,9 @@
 var gulp = require( 'gulp' );
 var gutil = require( 'gulp-util' );
 var ftp = require( 'vinyl-ftp' );
+var less = require('gulp-less');
+var cleanCSS = require('gulp-clean-css');
+var rename = require('gulp-rename');
 
 gulp.task( 'deploy', function () {
 
@@ -40,3 +43,12 @@ gulp.task( 'deploy', function () {
 		.pipe( conn.dest( 'bristoljon.uk/public_html' ) );
 
 } );
+
+// Compiles LESS > CSS
+gulp.task('build-less', function(){
+    return gulp.src('./less/styles.less')
+        .pipe(less())
+        .pipe(cleanCSS())
+        .pipe(rename('styles.min.css'))
+        .pipe(gulp.dest('./css'))
+});
