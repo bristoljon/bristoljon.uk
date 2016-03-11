@@ -70,13 +70,11 @@ include($root."/php/login.php");
         <div class="col-md-4  col-md-offset-1 panel panel-primary">
           <div class="panel-body">
             <h4>About Me</h4>
-            <p>I worked as a paramedic in London for 5 years until finally escaping (via Costa Rica) and making a fresh start doing what I really enjoy, hacking.</p>
-            <p>When I say hacking I mean doing what all humans do and have done since our earliest ancestor picked up a sharp rock and started hitting things (and people) with it.. Exploring, building, solving problems, evolving ideas and tools etc.</p>
-            <p>With so much technology available now there is infinite potential for getting creative and combining it all together to make new things.
-            </p>
-            <p>But for now I'm learning my basics (HTML/CSS, JS/JQuery, PHP, MySQL) and applying them to my own projects and this website.</p>
-            <p>After that I just have to work out some way I can get paid to do this!</p>
-            </p>
+            <p>I worked as a paramedic in London for 5 years until finally escaping (via Costa Rica) and making a fresh start doing what I really enjoy.</p>
+            <p>I started out doing an online web development course and applied what I learnt to this site and the various side projects along the way. Having projects to apply my learning to really helped and my knowledge (and this site) grew rapidly.</p>
+            <p>After 3 months I applied for and got my first job as a developer working on an open source ward management <a href="http://github.com/neovahealth">application</a>. Alongside developing my coding skills I learnt a lot about the benefits of agile methodologies, test driven development, continuous delivery and tools like gulp, vagrant and git.</p>
+            <p>Unfortunately despite the companies progressive approach, it recently went under so I'm back in the job market. On the plus side I can get back to all the projects I had on the backburner so it's not all bad!.</p>
+            <p>Besides software, I enjoy reading, expanding my mind, partying, frisbee and kite flying among other things..</p>
           </div>
         </div>
         <div class="col-md-4 col-md-offset-2  panel panel-primary">
