@@ -5,6 +5,25 @@ var less = require('gulp-less');
 var cleanCSS = require('gulp-clean-css');
 var rename = require('gulp-rename');
 
+gulp.task( 'delete', function () {
+
+	var conn = ftp.create( {
+		host:     'ftp.bristoljon.uk',
+		user:     process.env.FTP_USER,
+		password: process.env.FTP_PASS,
+		parallel: 3,
+		log:      gutil.log
+	} );
+
+	// using base = '.' will transfer everything to /public_html correctly
+	// turn off buffering in gulp.src for best performance
+
+    conn.rmdir('bristoljon/public_html', function(cb) {
+        console.log('done')
+    });
+
+} );
+
 gulp.task( 'deploy', function () {
 
 	console.log('User = ' + process.env.FTP_USER);
@@ -40,9 +59,9 @@ gulp.task( 'deploy', function () {
 	// using base = '.' will transfer everything to /public_html correctly
 	// turn off buffering in gulp.src for best performance
 
-	return gulp.src( globs, { base: '.', buffer: false } )
+	return gulp.src( globs, { base: '.', buffer: false })
 		.pipe( conn.newer( 'bristoljon.uk/public_html' ) ) // only upload newer files
-		.pipe( conn.dest( 'bristoljon.uk/public_html' ) );
+		.pipe( conn.dest( 'bristoljon.uk/public_html' ) )
 
 } );
 
