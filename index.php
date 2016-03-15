@@ -4,10 +4,7 @@ session_start();
 
 $root = $_SERVER['DOCUMENT_ROOT'];
 
-include($root."/php/login.php");
-
-
-
+include ($root . "/php/login.php");
 ?>
 
 
@@ -21,7 +18,9 @@ include($root."/php/login.php");
     
     <title>bristoljon.uk</title>
 
-    <?php include($root."/html/head.html"); ?>
+    <?php
+		include ($root . "/html/head.html");
+ 	?>
 
     <link href="/css/homepage.css" rel="stylesheet" type="text/css">
    
@@ -29,18 +28,24 @@ include($root."/php/login.php");
 
   <body>
     
-<?php include($root."/html/header.html"); ?>
+<?php
+include ($root . "/html/header.html");
+ ?>
 
-<?php include($root."/html/signupmodal.html"); ?>
+<?php
+include ($root . "/html/signupmodal.html");
+ ?>
 
     <div id="home" class="row jumbo">
       <div class="container">
       <div class="col-md-4 col-md-offset-4 splash">
-        <h1><?php if ($message) {
-                    echo $message;
-                    $message="";
-                  }
-                  else echo "BRISTOLJON.UK"; ?></h1>
+        <h1><?php
+		if ($message) {
+			echo $message;
+			$message = "";
+		} else
+			echo "BRISTOLJON.UK";
+ ?></h1>
       </div>
       <p id="photocred">Photo by <a href="https://www.flickr.com/photos/sagesolar/">@sage_solar</a> on Flickr</p>
       </div>
@@ -92,9 +97,13 @@ include($root."/php/login.php");
       </div>
     </div>
 
-<?php include($root."/html/contact.html"); ?>
+<?php
+include ($root . "/html/contact.html");
+ ?>
 
-<?php include($root."/html/foot.html"); ?>
+<?php
+include ($root . "/html/foot.html");
+ ?>
 
 <script src="http://code.angularjs.org/1.3.0-rc.1/angular.min.js"></script>
 
@@ -102,7 +111,7 @@ include($root."/php/login.php");
 
 <script type="text/javascript">
 
-$(window).load(function() {
+		$(window).load(function() {
 
 	$(".jumbo").css("min-height",$(window).height());
 
@@ -112,27 +121,26 @@ $(window).load(function() {
 	  }
 	
   <?php echo $openSignUpModal; ?>
+	});
 
-});
+	var myApp = angular.module('myApp', []);
 
-var myApp = angular.module('myApp', []);
+	myApp.controller('mainController', ['$scope', '$log', '$http', '$timeout',
+	function($scope, $log, $http, $timeout) {
 
-myApp.controller('mainController', ['$scope','$log','$http','$timeout',function($scope,$log,$http,$timeout) {
-	
-    $scope.convertDate = function (dater) {
-    	return timeSince(Date.parseExact(dater,"yyyy-MM-dd HH:mm:ss"));
-    };
-    
-	$http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+		$scope.convertDate = function(dater) {
+			return timeSince(Date.parseExact(dater, "yyyy-MM-dd HH:mm:ss"));
+		};
 
-	$http.post('/php/updates.php',"get=recent").
-  	then(function(response) {
-  		$scope.updates = angular.fromJson(response.data);
-  	}, function(response) {
-	    $log.log("Failed");
-  	});
-   
-}]);
+		$http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+
+		$http.post('/php/updates.php', "get=recent").then(function(response) {
+			$scope.updates = angular.fromJson(response.data);
+		}, function(response) {
+			$log.log("Failed");
+		});
+
+	}]);
 
 </script>
    
