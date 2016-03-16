@@ -8,3 +8,7 @@ RewriteRule ^logout index.php?logout=1
 RewriteRule ^private/([^/.]+)/?$ php/private.php?query=$1 [L]
 
 RewriteRule ^notfound php/notfound.php
+
+RewriteRule ^dozenal project/dozenal
+
+RewriteRule ^3d2 project/3d3
