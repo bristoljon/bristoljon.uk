@@ -11,4 +11,4 @@ RewriteRule ^notfound php/notfound.php
 
 RewriteRule ^dozenal project/dozenal
 
-RewriteRule ^3d2 project/3d3
+RewriteRule ^3d2 project/3d2
