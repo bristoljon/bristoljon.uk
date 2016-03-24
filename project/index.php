@@ -230,7 +230,15 @@ img {
           <div>
             <?php 
               if ($results['latest']!="") {
-                echo "<a class='btn btn-block btn-primary' id='latestVersion' target='_blank' href='".$results['latest']."'>Try it now! </a><br/>";
+                echo "<a class='btn btn-lg btn-block btn-primary' id='latestVersion' target='_blank' href='".$results['latest']."'><strong>Try it now </strong></a><br/>";
+              }
+            ?>
+          </div>
+
+          <div>
+            <?php
+              if ($results['source']!="") {
+                echo "<a class='btn btn-block btn-info' id='sourceLink' target='_blank' href='".$results['source']."'>View Source <i class='fa fa-github fa-6'></i></a><br/>";
               }
             ?>
           </div>
