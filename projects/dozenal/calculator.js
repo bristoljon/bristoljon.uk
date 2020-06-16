@@ -97,6 +97,7 @@ function intfrac_to_doz(frac) {
         res += int_to_doz(v);
         len--;
     }
+    while (res.slice(-1) === '0') res = res.slice(0, -1);
     return res;
 }
 
@@ -148,7 +149,6 @@ function from_doz(doz) {
             }
 
             result *= Math.pow(10,prec);
-            result = Math.round(result);
             result /= Math.pow(10,prec);
 
             return result;
